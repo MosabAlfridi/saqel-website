@@ -175,47 +175,27 @@ tailwind.config = {
 <main id="main">
 
 <!-- ============ HERO ============ -->
-<section class="relative overflow-hidden pt-36 pb-56 sm:pt-44 sm:pb-72">
+<section class="relative overflow-hidden pt-36 pb-40 sm:pt-44 sm:pb-52">
 
-  <!-- sky layers -->
-  <div class="absolute inset-0 stars opacity-80" aria-hidden="true"></div>
-  <div class="absolute inset-0 grid-fade" aria-hidden="true"></div>
-  <div class="aurora aurora-a drift-a w-[520px] h-[520px] -top-40 right-[-120px] opacity-70" aria-hidden="true"></div>
-  <div class="aurora aurora-b drift-b w-[440px] h-[440px] top-24 left-[-140px] opacity-60" aria-hidden="true"></div>
-  <div class="aurora aurora-c drift-a w-[600px] h-[380px] top-[360px] left-1/4 opacity-40" aria-hidden="true"></div>
-
-  <!-- ---- HAIL LANDSCAPE: Aja ridges + Nefud dunes, parallax on scroll ---- -->
-  <div class="absolute inset-x-0 bottom-0 h-[420px] pointer-events-none select-none" aria-hidden="true">
-
-    <!-- warm horizon -->
-    <div class="aurora aurora-warm w-[1000px] h-[300px] bottom-[60px] left-1/2 -translate-x-1/2 opacity-90"></div>
-
-    <!-- far ridge -->
-    <svg data-depth="0.10" class="parallax absolute bottom-[132px] inset-x-0 w-full h-[190px]" viewBox="0 0 1440 220" preserveAspectRatio="none">
-      <path d="M0,220 L0,168 L84,104 L150,140 L232,62 L302,126 L366,96 L446,148 L524,74 L602,130 L664,104 L744,156 L822,88 L902,134 L980,110 L1062,160 L1142,98 L1222,140 L1302,82 L1382,128 L1440,104 L1440,220 Z" fill="#111737" opacity=".85"/>
-    </svg>
-
-    <!-- near ridge -->
-    <svg data-depth="0.18" class="parallax absolute bottom-[96px] inset-x-0 w-full h-[170px]" viewBox="0 0 1440 200" preserveAspectRatio="none">
-      <path d="M0,200 L0,150 L96,96 L176,138 L262,72 L340,132 L420,104 L508,152 L590,86 L672,138 L760,112 L848,160 L930,98 L1014,146 L1100,90 L1188,140 L1272,106 L1356,150 L1440,118 L1440,200 Z" fill="#0D1229"/>
-      <path d="M0,150 L96,96 L176,138 L262,72 L340,132 L420,104 L508,152 L590,86 L672,138 L760,112 L848,160 L930,98 L1014,146 L1100,90 L1188,140 L1272,106 L1356,150 L1440,118" fill="none" stroke="rgba(48,161,255,.28)" stroke-width="1.5"/>
-    </svg>
-
-    <!-- far dune -->
-    <svg data-depth="0.28" class="parallax absolute bottom-[40px] inset-x-0 w-full h-[150px]" viewBox="0 0 1440 170" preserveAspectRatio="none">
-      <path d="M0,170 L0,96 C140,58 250,112 392,94 C534,76 612,34 774,52 C918,68 996,116 1138,104 C1272,92 1364,52 1440,68 L1440,170 Z" fill="#0B0F24"/>
-      <path d="M0,96 C140,58 250,112 392,94 C534,76 612,34 774,52 C918,68 996,116 1138,104 C1272,92 1364,52 1440,68" fill="none" stroke="rgba(217,164,108,.20)" stroke-width="1.5"/>
-    </svg>
-
-    <!-- near dune -->
-    <svg data-depth="0.40" class="parallax absolute bottom-0 inset-x-0 w-full h-[130px]" viewBox="0 0 1440 140" preserveAspectRatio="none">
-      <path d="M0,140 L0,74 C180,102 300,44 470,58 C640,72 726,116 900,104 C1058,93 1160,48 1290,60 C1360,66 1404,80 1440,88 L1440,140 Z" fill="#090C1E"/>
-      <path d="M0,74 C180,102 300,44 470,58 C640,72 726,116 900,104 C1058,93 1160,48 1290,60 C1360,66 1404,80 1440,88" fill="none" stroke="rgba(0,240,194,.16)" stroke-width="1.5"/>
-    </svg>
-
-    <!-- blend into the next section -->
-    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-deep to-transparent"></div>
+  <!-- ---- Real Hail landscape: Al Nefud dunes against the granite of Aja, Naylat, Hail.
+       Photo by Rabah Al Shammary via Unsplash (Unsplash License).
+       https://unsplash.com/photos/7vOpzRF33Zo
+       Cropped low so the ridge line sits under the headline, then darkened and
+       tinted to the brand gradient. Drifts slowly on scroll. ---- -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+    <img src="assets/hail-landscape.jpg" alt="" width="1800" height="1350" fetchpriority="high" decoding="async"
+         data-depth="0.16" class="parallax absolute inset-x-0 top-[-12%] w-full h-[124%] object-cover"
+         style="object-position:50% 72%; filter:saturate(.45) brightness(.36) contrast(1.08);">
+    <div class="absolute inset-0 mix-blend-color" style="background-image:linear-gradient(120deg,#183BFF,#30A1FF 55%,#00F0C2); opacity:.42;"></div>
+    <div class="absolute inset-0" style="background-image:linear-gradient(to bottom,rgba(10,15,44,.95) 0%,rgba(10,15,44,.84) 30%,rgba(10,15,44,.55) 58%,rgba(10,15,44,.90) 86%,#0A0F2C 100%);"></div>
+    <div class="absolute inset-0" style="background-image:radial-gradient(ellipse 70% 60% at 50% 45%, transparent 0%, rgba(10,15,44,.55) 100%);"></div>
   </div>
+
+  <!-- sky layers, over the photograph -->
+  <div class="absolute inset-0 stars opacity-60" aria-hidden="true"></div>
+  <div class="absolute inset-0 grid-fade opacity-70" aria-hidden="true"></div>
+  <div class="aurora aurora-a drift-a w-[520px] h-[520px] -top-40 right-[-120px] opacity-60" aria-hidden="true"></div>
+  <div class="aurora aurora-b drift-b w-[440px] h-[440px] top-24 left-[-140px] opacity-45" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
     <div class="grid lg:grid-cols-12 gap-16 items-center">
@@ -245,7 +225,7 @@ tailwind.config = {
       <div class="lg:col-span-5 flex justify-center">
         <div class="relative reveal" style="transition-delay:.18s">
           <div class="breathe absolute inset-0 -m-16 rounded-full bg-[radial-gradient(circle,rgba(48,161,255,.45),transparent_65%)]" aria-hidden="true"></div>
-          <div class="relative grad-border rounded-[2.5rem] p-10 sm:p-14 glass">
+          <div class="relative grad-border rounded-[2.5rem] p-10 sm:p-14 glass" style="background:rgba(10,15,44,.42);">
             <img src="assets/logo.svg" alt="شعار صقل" class="w-44 sm:w-60 h-auto drop-shadow-[0_0_40px_rgba(48,161,255,.35)]" width="59" height="36">
           </div>
         </div>
@@ -358,7 +338,7 @@ tailwind.config = {
        Treated to brand colors: darkened, desaturated, then tinted with the brand gradient. -->
   <div class="absolute inset-0" aria-hidden="true">
     <img src="assets/hail-landscape.jpg" alt="" width="1800" height="1350" loading="lazy" decoding="async"
-         class="w-full h-full object-cover" style="filter:saturate(.6) brightness(.5) contrast(1.04);">
+         class="w-full h-full object-cover" style="object-position:50% 26%; filter:saturate(.6) brightness(.5) contrast(1.04);">
     <div class="absolute inset-0 mix-blend-color" style="background-image:linear-gradient(120deg,#183BFF,#30A1FF 55%,#00F0C2); opacity:.40;"></div>
     <div class="absolute inset-0" style="background-image:linear-gradient(to bottom,#0A0F2C 0%,rgba(10,15,44,.55) 28%,rgba(10,15,44,.62) 62%,#0A0F2C 100%);"></div>
   </div>
