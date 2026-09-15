@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صقل | بناء القدرات في الذكاء الاصطناعي</title>
+<meta name="description" content="صقل مبادرة غير ربحية في منطقة حائل تبني قدرات الشباب في الذكاء الاصطناعي: من المعرفة الأساسية إلى التطبيق العملي، وصولاً إلى مشروع حقيقي وفرصة مهنية.">
+<meta name="theme-color" content="#0A0F2C">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="صقل | بناء القدرات في الذكاء الاصطناعي">
+<meta property="og:description" content="مبادرة غير ربحية في منطقة حائل: من المعرفة إلى التطبيق إلى الفرصة.">
+<meta property="og:image" content="assets/health-conference.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        deep:    '#0A0F2C',
+        surface: '#0F121E',
+        elec:    '#183BFF',
+        sky:     '#30A1FF',
+        turq:    '#00F0C2',
+        violet:  '#361CCC',
+        sand:    '#D9A46C',
+        muted:   '#9AA8C7'
+      },
+      fontFamily: { sans: ['"Readex Pro"', 'system-ui', 'sans-serif'] }
+    }
+  }
+}
+</script>
+
+<style>
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { background-color: #0A0F2C; overflow-x: hidden; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+
+  /* ---- Brand gradient ---- */
+  .grad { background-image: linear-gradient(120deg, #183BFF 0%, #30A1FF 50%, #00F0C2 100%); }
+  .grad-text {
+    background-image: linear-gradient(120deg, #30A1FF 0%, #00F0C2 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grad-border { position: relative; background: rgba(255,255,255,.03); }
+  .grad-border::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(140deg, rgba(48,161,255,.45), rgba(0,240,194,.25) 45%, rgba(255,255,255,.04) 80%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .glass {
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* ---- Aurora glows, slowly drifting ---- */
+  .aurora { position: absolute; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
+  .aurora-a { background: radial-gradient(circle, rgba(24,59,255,.55), transparent 70%); }
+  .aurora-b { background: radial-gradient(circle, rgba(0,240,194,.30), transparent 70%); }
+  .aurora-c { background: radial-gradient(circle, rgba(54,28,204,.45), transparent 70%); }
+  .aurora-warm { background: radial-gradient(circle, rgba(217,164,108,.22), transparent 70%); }
+
+  @keyframes drift-a { 0%,100% { transform: translate3d(0,0,0) scale(1);} 50% { transform: translate3d(-28px,26px,0) scale(1.07);} }
+  @keyframes drift-b { 0%,100% { transform: translate3d(0,0,0) scale(1);} 50% { transform: translate3d(34px,-18px,0) scale(1.05);} }
+  .drift-a { animation: drift-a 22s ease-in-out infinite; }
+  .drift-b { animation: drift-b 28s ease-in-out infinite; }
+
+  /* ---- Star field ---- */
+  .stars {
+    background-image:
+      radial-gradient(1.4px 1.4px at 12% 22%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1.1px 1.1px at 28% 12%, rgba(255,255,255,.40), transparent),
+      radial-gradient(1.6px 1.6px at 46% 30%, rgba(0,240,194,.45), transparent),
+      radial-gradient(1.1px 1.1px at 63% 16%, rgba(255,255,255,.45), transparent),
+      radial-gradient(1.4px 1.4px at 78% 34%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.2px 1.2px at 88% 20%, rgba(48,161,255,.55), transparent),
+      radial-gradient(1.1px 1.1px at 36% 44%, rgba(255,255,255,.28), transparent),
+      radial-gradient(1.3px 1.3px at 70% 48%, rgba(255,255,255,.30), transparent);
+    background-repeat: no-repeat;
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 25%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 25%, #000 20%, transparent 75%);
+  }
+
+  @keyframes breathe { 0%,100% { opacity:.5; transform: scale(1);} 50% { opacity:.85; transform: scale(1.07);} }
+  .breathe { animation: breathe 7s ease-in-out infinite; }
+
+  /* ---- Scroll reveal ---- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.22,.8,.3,1), transform .7s cubic-bezier(.22,.8,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---- Marquee ---- */
+  @keyframes slide-rtl { from { transform: translateX(0);} to { transform: translateX(50%);} }
+  .marquee-track { animation: slide-rtl 38s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+
+  /* ---- Photos: sit them in the dark theme ---- */
+  .photo img {
+    filter: saturate(.85) contrast(1.05) brightness(.82);
+    transition: transform .7s cubic-bezier(.22,.8,.3,1), filter .5s ease;
+  }
+  .photo:hover img { transform: scale(1.05); filter: saturate(1) contrast(1.02) brightness(.95); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid #00F0C2; outline-offset: 3px; border-radius: 8px;
+  }
+  select option { background: #0F121E; color: #fff; }
+</style>
+</head>
+
+<body class="bg-deep text-white font-sans antialiased selection:bg-turq/25">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:right-4 focus:z-[60] focus:bg-white focus:text-deep focus:px-4 focus:py-2 focus:rounded-xl">تخطَّ إلى المحتوى</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <nav id="navbar" class="mt-4 flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300" aria-label="التنقل الرئيسي">
+
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <img src="assets/logo.svg" alt="" class="h-8 w-auto" width="59" height="36">
+        <span class="flex flex-col leading-none">
+          <span class="text-xl font-bold tracking-tight">صقل</span>
+          <span class="mt-1 text-[10px] text-muted hidden sm:block">بناء القدرات في الذكاء الاصطناعي</span>
+        </span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-muted">
+        <li><a href="#about"   class="hover:text-white transition-colors">عن المبادرة</a></li>
+        <li><a href="#offer"   class="hover:text-white transition-colors">ما نقدّمه</a></li>
+        <li><a href="#record"  class="hover:text-white transition-colors">الأثر</a></li>
+        <li><a href="#contact" class="hover:text-white transition-colors">تواصل</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <a href="#join" class="hidden sm:inline-flex grad text-deep font-semibold text-sm px-5 py-2.5 rounded-xl hover:scale-[1.04] transition-transform shadow-lg shadow-sky/20">انضم إلينا</a>
+        <button id="menuBtn" class="md:hidden p-2 rounded-xl glass" aria-label="القائمة" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobileMenu" class="md:hidden hidden mt-2 glass rounded-2xl p-2">
+      <a href="#about"   class="block px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">عن المبادرة</a>
+      <a href="#offer"   class="block px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">ما نقدّمه</a>
+      <a href="#record"  class="block px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">الأثر</a>
+      <a href="#contact" class="block px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">تواصل</a>
+      <a href="#join"    class="mt-1 block text-center grad text-deep font-semibold px-4 py-3 rounded-xl">انضم إلينا</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden pt-36 pb-56 sm:pt-44 sm:pb-72">
+
+  <!-- sky layers -->
+  <div class="absolute inset-0 stars opacity-80" aria-hidden="true"></div>
+  <div class="absolute inset-0 grid-fade" aria-hidden="true"></div>
+  <div class="aurora aurora-a drift-a w-[520px] h-[520px] -top-40 right-[-120px] opacity-70" aria-hidden="true"></div>
+  <div class="aurora aurora-b drift-b w-[440px] h-[440px] top-24 left-[-140px] opacity-60" aria-hidden="true"></div>
+  <div class="aurora aurora-c drift-a w-[600px] h-[380px] top-[360px] left-1/4 opacity-40" aria-hidden="true"></div>
+
+  <!-- ---- HAIL LANDSCAPE: Aja ridges + Nefud dunes, parallax on scroll ---- -->
+  <div class="absolute inset-x-0 bottom-0 h-[420px] pointer-events-none select-none" aria-hidden="true">
+
+    <!-- warm horizon -->
+    <div class="aurora aurora-warm w-[1000px] h-[300px] bottom-[60px] left-1/2 -translate-x-1/2 opacity-90"></div>
+
+    <!-- far ridge -->
+    <svg data-depth="0.10" class="parallax absolute bottom-[132px] inset-x-0 w-full h-[190px]" viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <path d="M0,220 L0,168 L84,104 L150,140 L232,62 L302,126 L366,96 L446,148 L524,74 L602,130 L664,104 L744,156 L822,88 L902,134 L980,110 L1062,160 L1142,98 L1222,140 L1302,82 L1382,128 L1440,104 L1440,220 Z" fill="#111737" opacity=".85"/>
+    </svg>
+
+    <!-- near ridge -->
+    <svg data-depth="0.18" class="parallax absolute bottom-[96px] inset-x-0 w-full h-[170px]" viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d="M0,200 L0,150 L96,96 L176,138 L262,72 L340,132 L420,104 L508,152 L590,86 L672,138 L760,112 L848,160 L930,98 L1014,146 L1100,90 L1188,140 L1272,106 L1356,150 L1440,118 L1440,200 Z" fill="#0D1229"/>
+      <path d="M0,150 L96,96 L176,138 L262,72 L340,132 L420,104 L508,152 L590,86 L672,138 L760,112 L848,160 L930,98 L1014,146 L1100,90 L1188,140 L1272,106 L1356,150 L1440,118" fill="none" stroke="rgba(48,161,255,.28)" stroke-width="1.5"/>
+    </svg>
+
+    <!-- far dune -->
+    <svg data-depth="0.28" class="parallax absolute bottom-[40px] inset-x-0 w-full h-[150px]" viewBox="0 0 1440 170" preserveAspectRatio="none">
+      <path d="M0,170 L0,96 C140,58 250,112 392,94 C534,76 612,34 774,52 C918,68 996,116 1138,104 C1272,92 1364,52 1440,68 L1440,170 Z" fill="#0B0F24"/>
+      <path d="M0,96 C140,58 250,112 392,94 C534,76 612,34 774,52 C918,68 996,116 1138,104 C1272,92 1364,52 1440,68" fill="none" stroke="rgba(217,164,108,.20)" stroke-width="1.5"/>
+    </svg>
+
+    <!-- near dune -->
+    <svg data-depth="0.40" class="parallax absolute bottom-0 inset-x-0 w-full h-[130px]" viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,140 L0,74 C180,102 300,44 470,58 C640,72 726,116 900,104 C1058,93 1160,48 1290,60 C1360,66 1404,80 1440,88 L1440,140 Z" fill="#090C1E"/>
+      <path d="M0,74 C180,102 300,44 470,58 C640,72 726,116 900,104 C1058,93 1160,48 1290,60 C1360,66 1404,80 1440,88" fill="none" stroke="rgba(0,240,194,.16)" stroke-width="1.5"/>
+    </svg>
+
+    <!-- blend into the next section -->
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-deep to-transparent"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-16 items-center">
+
+      <div class="lg:col-span-7 text-center lg:text-right">
+        <span class="reveal inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs sm:text-sm text-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-turq"></span>
+          مبادرة غير ربحية · منطقة حائل
+        </span>
+
+        <h1 class="reveal mt-7 text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.45] tracking-tight" style="transition-delay:.08s">
+          نبني قدرات شباب حائل في <span class="grad-text">الذكاء الاصطناعي</span>
+        </h1>
+
+        <p class="reveal mt-6 text-base sm:text-lg text-muted leading-loose max-w-xl mx-auto lg:mx-0" style="transition-delay:.16s">
+          من المعرفة الأساسية إلى التطبيق العملي، وصولاً إلى مشروع حقيقي وفرصة مهنية.
+        </p>
+
+        <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start" style="transition-delay:.24s">
+          <a href="#join" class="grad text-deep font-semibold px-8 py-4 rounded-2xl hover:scale-[1.03] transition-transform shadow-xl shadow-elec/25">انضم إلينا</a>
+          <a href="#contact" class="glass font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">كن شريكاً</a>
+        </div>
+
+        <p class="reveal mt-8 text-sm text-muted/80" style="transition-delay:.3s">نُمكّن العقول، نبني المستقبل.</p>
+      </div>
+
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative reveal" style="transition-delay:.18s">
+          <div class="breathe absolute inset-0 -m-16 rounded-full bg-[radial-gradient(circle,rgba(48,161,255,.45),transparent_65%)]" aria-hidden="true"></div>
+          <div class="relative grad-border rounded-[2.5rem] p-10 sm:p-14 glass">
+            <img src="assets/logo.svg" alt="شعار صقل" class="w-44 sm:w-60 h-auto drop-shadow-[0_0_40px_rgba(48,161,255,.35)]" width="59" height="36">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / ABOUT ============ -->
+<section id="about" class="relative overflow-hidden py-24 sm:py-28">
+  <div class="aurora aurora-b drift-b w-[420px] h-[420px] top-10 right-[-160px] opacity-25" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
+    <p class="reveal text-sm font-medium grad-text">عن المبادرة</p>
+    <h2 class="reveal mt-4 text-3xl sm:text-4xl font-bold leading-snug tracking-tight" style="transition-delay:.06s">
+      الفجوة ليست في المهارة، بل في البيئة
+    </h2>
+    <p class="reveal mt-8 text-lg sm:text-xl text-muted leading-loose" style="transition-delay:.12s">
+      شباب حائل يستخدمون الذكاء الاصطناعي كل يوم، لكن تنقصهم البيئة المحلية التي تحوّل المهارة إلى مشاريع وفرص: لا توجيه محلي، لا فرص تطبيقية، والفرص القوية مركّزة في المدن الكبرى.
+      <span class="text-white font-medium">نحن الجسر المحلي الذي يسدّ هذه الفجوة.</span>
+    </p>
+
+    <div class="reveal mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="transition-delay:.18s">
+      <span class="glass rounded-full px-5 py-2.5 text-muted">معرفة</span>
+      <svg class="w-4 h-4 text-sky rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span class="glass rounded-full px-5 py-2.5 text-muted">تطبيق</span>
+      <svg class="w-4 h-4 text-turq rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span class="grad-border rounded-full px-5 py-2.5 text-white font-medium">فرصة</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section id="offer" class="relative overflow-hidden py-20 sm:py-24">
+  <div class="aurora aurora-a drift-a w-[480px] h-[480px] top-0 left-[-180px] opacity-25" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+
+    <div class="max-w-2xl">
+      <p class="reveal text-sm font-medium grad-text">ما نقدّمه</p>
+      <h2 class="reveal mt-4 text-3xl sm:text-4xl font-bold tracking-tight leading-snug" style="transition-delay:.06s">
+        ثلاث ركائز تنقلك من الاهتمام إلى الأثر
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+
+      <article class="reveal grad-border rounded-3xl p-8 hover:-translate-y-1.5 transition-transform duration-300">
+        <div class="w-12 h-12 rounded-2xl grad flex items-center justify-center text-deep shadow-lg shadow-elec/20">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-bold">مجتمع</h3>
+        <p class="mt-3 text-muted leading-loose">نقطة الانطلاق والانتماء؛ جلسات أسبوعية وتقييم يوجّهك لمسارك.</p>
+      </article>
+
+      <article class="reveal grad-border rounded-3xl p-8 hover:-translate-y-1.5 transition-transform duration-300" style="transition-delay:.09s">
+        <div class="w-12 h-12 rounded-2xl grad flex items-center justify-center text-deep shadow-lg shadow-elec/20">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/>
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-bold">أكاديمية</h3>
+        <p class="mt-3 text-muted leading-loose">تدريب متخصص حسب مجالك ينتهي بمشروع حقيقي ومحفظة مهنية، وربط بالفرص.</p>
+      </article>
+
+      <article class="reveal grad-border rounded-3xl p-8 hover:-translate-y-1.5 transition-transform duration-300" style="transition-delay:.18s">
+        <div class="w-12 h-12 rounded-2xl grad flex items-center justify-center text-deep shadow-lg shadow-elec/20">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 3h6M10 3v6.5L4.8 18a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 9.5V3"/><path d="M7.5 15h9"/>
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-bold">مختبر حلول</h3>
+        <p class="mt-3 text-muted leading-loose">تحديات حقيقية من جهات المنطقة تحوّل مهارتك إلى أثر ملموس.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES ============ -->
+<section class="relative py-14 sm:py-16">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="reveal glass rounded-2xl p-6">
+        <span class="text-xs font-medium grad-text">01</span>
+        <h3 class="mt-2 text-lg font-bold">الابتكار</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">نستكشف آفاقاً جديدة ونتقدم بحلول مبتكرة.</p>
+      </div>
+      <div class="reveal glass rounded-2xl p-6" style="transition-delay:.08s">
+        <span class="text-xs font-medium grad-text">02</span>
+        <h3 class="mt-2 text-lg font-bold">التمكين</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">نمكّن الأفراد بالمعرفة والمهارات الذكية.</p>
+      </div>
+      <div class="reveal glass rounded-2xl p-6" style="transition-delay:.16s">
+        <span class="text-xs font-medium grad-text">03</span>
+        <h3 class="mt-2 text-lg font-bold">الأثر</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">نحو تأثير حقيقي يحدث فرقاً مستداماً.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FROM HAIL ============ -->
+<section class="relative py-32 sm:py-44 overflow-hidden">
+
+  <!-- Real photograph: Al Nefud dunes meeting the granite of Aja, Naylat, Hail.
+       Photo by Rabah Al Shammary via Unsplash (Unsplash License, commercial use allowed).
+       Source: https://unsplash.com/photos/7vOpzRF33Zo
+       Treated to brand colors: darkened, desaturated, then tinted with the brand gradient. -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src="assets/hail-landscape.jpg" alt="" width="1800" height="1350" loading="lazy" decoding="async"
+         class="w-full h-full object-cover" style="filter:saturate(.6) brightness(.5) contrast(1.04);">
+    <div class="absolute inset-0 mix-blend-color" style="background-image:linear-gradient(120deg,#183BFF,#30A1FF 55%,#00F0C2); opacity:.40;"></div>
+    <div class="absolute inset-0" style="background-image:linear-gradient(to bottom,#0A0F2C 0%,rgba(10,15,44,.55) 28%,rgba(10,15,44,.62) 62%,#0A0F2C 100%);"></div>
+  </div>
+
+  <div class="aurora aurora-warm drift-b w-[760px] h-[300px] bottom-0 left-1/2 -translate-x-1/2 opacity-70" aria-hidden="true"></div>
+
+  <!-- dune band -->
+  <svg class="absolute inset-x-0 bottom-0 w-full h-[120px] opacity-70" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,140 L0,88 C170,54 306,108 468,92 C630,76 720,40 884,58 C1030,74 1140,110 1276,98 C1348,92 1402,78 1440,70 L1440,140 Z" fill="#090C1E"/>
+    <path d="M0,88 C170,54 306,108 468,92 C630,76 720,40 884,58 C1030,74 1140,110 1276,98 C1348,92 1402,78 1440,70" fill="none" stroke="rgba(217,164,108,.22)" stroke-width="1.5"/>
+  </svg>
+
+  <div class="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
+    <p class="reveal text-sm font-medium text-sand/90">من حائل</p>
+    <h2 class="reveal mt-4 text-3xl sm:text-4xl font-bold tracking-tight leading-snug" style="transition-delay:.06s">
+      من هنا نبدأ
+    </h2>
+    <p class="reveal mt-7 text-lg text-muted leading-loose" style="transition-delay:.12s">
+      بين جبال أجا ورمال النفود، منطقة شابة تمتلك الطاقة والموهبة. ما ينقصها ليس القدرة، بل البيئة التي تحوّل هذه الطاقة إلى إنتاج.
+      <span class="text-white font-medium">صقل تُبنى هنا، ولأهل هنا.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ TRACK RECORD ============ -->
+<section id="record" class="relative overflow-hidden py-20 sm:py-24">
+  <div class="aurora aurora-a drift-a w-[440px] h-[440px] top-10 left-[-160px] opacity-20" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+
+    <div class="max-w-2xl">
+      <p class="reveal text-sm font-medium grad-text">سجلّنا</p>
+      <h2 class="reveal mt-4 text-3xl sm:text-4xl font-bold tracking-tight leading-snug" style="transition-delay:.06s">
+        لم نبدأ من الصفر
+      </h2>
+      <p class="reveal mt-5 text-muted leading-loose" style="transition-delay:.12s">
+        قبل أن تصبح صقل مبادرة، كان الفريق نفسه يبني على الأرض في حائل. هذه حصيلة عام واحد من العمل.
+      </p>
+    </div>
+
+    <!-- EDITABLE: data-count is the number, data-suffix is what follows it -->
+    <div class="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="reveal grad-border rounded-3xl p-7">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="60" data-suffix="+">0</div>
+        <p class="mt-3 text-sm text-muted">نشاط ومبادرة خلال عام</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-7" style="transition-delay:.06s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="6000" data-suffix="+">0</div>
+        <p class="mt-3 text-sm text-muted">زائر وحضور في فعاليات المنطقة</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-7" style="transition-delay:.12s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="12" data-suffix="+">0</div>
+        <p class="mt-3 text-sm text-muted">إنجاز وجائزة محلية ووطنية</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-7" style="transition-delay:.18s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="9">0</div>
+        <p class="mt-3 text-sm text-muted">دورة تدريبية متخصصة</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-7" style="transition-delay:.24s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="90" data-suffix="+">0</div>
+        <p class="mt-3 text-sm text-muted">عضو ومتطوع في ستة فرق</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-7 flex flex-col justify-center" style="transition-delay:.3s">
+        <p class="text-base font-bold leading-relaxed">حضور في LEAP وGAIN ورالي حائل ومؤتمر الصحة العالمي</p>
+        <p class="mt-2 text-sm text-muted">تمثيل المنطقة في المحافل الوطنية</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="relative py-16 sm:py-20">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <p class="reveal text-center text-sm text-muted">لمحات من العمل على الأرض</p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10">
+        <img src="assets/health-conference.jpg" alt="جناح النادي في مؤتمر الصحة العالمي بحائل" width="800" height="533" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">مؤتمر الصحة العالمي · حائل</figcaption>
+      </figure>
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10" style="transition-delay:.06s">
+        <img src="assets/official-visit.jpg" alt="استقبال وفد رسمي في جناح النادي" width="989" height="556" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">استقبال الوفود الرسمية</figcaption>
+      </figure>
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10" style="transition-delay:.12s">
+        <img src="assets/hail-rally.jpg" alt="فريق النادي في فعالية رالي حائل" width="663" height="363" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">رالي حائل</figcaption>
+      </figure>
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10" style="transition-delay:.18s">
+        <img src="assets/course-lecture.jpg" alt="دورة تدريبية في الذكاء الاصطناعي" width="807" height="454" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">دورات تدريبية متخصصة</figcaption>
+      </figure>
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10" style="transition-delay:.24s">
+        <img src="assets/rally-booth.jpg" alt="جناح النادي التعريفي" width="580" height="323" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">أجنحة تعريفية للمجتمع</figcaption>
+      </figure>
+
+      <figure class="reveal photo group relative overflow-hidden rounded-3xl aspect-[16/9] border border-white/10" style="transition-delay:.3s">
+        <img src="assets/leap-conference.jpg" alt="مشاركة الفريق في مؤتمر ليب" width="580" height="325" loading="lazy" decoding="async" class="w-full h-full object-cover">
+        <figcaption class="absolute inset-x-0 bottom-0 p-5 text-sm bg-gradient-to-t from-deep via-deep/70 to-transparent">مؤتمر LEAP</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARGETS ============ -->
+<section id="impact" class="relative overflow-hidden py-24 sm:py-28">
+  <div class="aurora aurora-c drift-b w-[560px] h-[400px] top-10 right-1/4 opacity-30" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="reveal text-sm font-medium grad-text">ما نستهدفه</p>
+      <h2 class="reveal mt-4 text-3xl sm:text-4xl font-bold tracking-tight leading-snug" style="transition-delay:.06s">المرحلة القادمة</h2>
+      <p class="reveal mt-5 text-muted leading-loose" style="transition-delay:.12s">نبني منظومة محلية تنقل الشباب من الوعي إلى الإنتاج.</p>
+    </div>
+
+    <!-- EDITABLE NUMBERS -->
+    <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="reveal grad-border rounded-3xl p-8 text-center">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="300">0</div>
+        <p class="mt-3 text-sm text-muted">مستفيد</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-8 text-center" style="transition-delay:.07s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="5">0</div>
+        <p class="mt-3 text-sm text-muted">مسارات تخصصية</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-8 text-center" style="transition-delay:.14s">
+        <div class="text-4xl sm:text-5xl font-bold grad-text tabular-nums" data-count="100">0</div>
+        <p class="mt-3 text-sm text-muted">مشروع حقيقي</p>
+      </div>
+
+      <div class="reveal grad-border rounded-3xl p-8 text-center flex flex-col items-center justify-center" style="transition-delay:.21s">
+        <svg class="w-10 h-10 text-turq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>
+        </svg>
+        <p class="mt-3 text-base font-bold">ربط بالفرص</p>
+        <p class="mt-1 text-sm text-muted">تدريب وتوظيف ومشاريع</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="relative py-16 sm:py-20 border-y border-white/5">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <p class="reveal text-center text-sm text-muted">نعمل على بناء شراكات مع</p>
+
+    <div class="marquee reveal mt-10 overflow-hidden" style="transition-delay:.08s;
+         -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+         mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);">
+      <div class="marquee-track flex w-max items-center gap-4">
+        <!-- PARTNER PLACEHOLDERS: swap each tile for a real logo <img> once a partnership is confirmed -->
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+        <div class="glass rounded-2xl h-20 w-44 shrink-0 flex items-center justify-center text-xs text-muted/60" aria-hidden="true">شريك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN / CTA ============ -->
+<section id="join" class="relative overflow-hidden py-24 sm:py-28">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-white/10 bg-surface p-8 sm:p-14">
+
+      <div class="absolute inset-0 opacity-90" style="background-image:linear-gradient(140deg, rgba(24,59,255,.35) 0%, rgba(54,28,204,.22) 45%, rgba(0,240,194,.14) 100%);" aria-hidden="true"></div>
+      <div class="aurora aurora-b drift-a w-[420px] h-[300px] -bottom-32 left-[-80px] opacity-50" aria-hidden="true"></div>
+
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="text-center lg:text-right">
+          <h2 class="text-3xl sm:text-4xl font-bold leading-snug tracking-tight">هل أنت مستعد لتبدأ رحلتك في الذكاء الاصطناعي؟</h2>
+          <p class="mt-5 text-muted leading-loose">سجّل اهتمامك وسنتواصل معك عند فتح التسجيل في الجلسات والمسارات القادمة.</p>
+          <p class="mt-6 text-sm text-muted/80">من المعرفة إلى التطبيق إلى الفرصة.</p>
+        </div>
+
+        <!-- FORM: no backend wired. Point action= to Tally/Formspree, or keep the JS handler below. -->
+        <form id="joinForm" class="glass rounded-3xl p-6 sm:p-7 space-y-4" novalidate>
+          <div>
+            <label for="f-name" class="block text-sm text-muted mb-2">الاسم</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="اسمك الكامل"
+              class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-muted/50 focus:border-turq/60 transition-colors">
+          </div>
+
+          <div>
+            <label for="f-contact" class="block text-sm text-muted mb-2">البريد الإلكتروني أو رقم الجوال</label>
+            <input id="f-contact" name="contact" type="text" required dir="auto" placeholder="name@email.com  /  05xxxxxxxx"
+              class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-muted/50 focus:border-turq/60 transition-colors">
+          </div>
+
+          <div>
+            <label for="f-type" class="block text-sm text-muted mb-2">الفئة</label>
+            <select id="f-type" name="type" required
+              class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-turq/60 transition-colors appearance-none">
+              <option value="">اختر الفئة</option>
+              <option value="student">طالب</option>
+              <option value="graduate">خريج</option>
+              <option value="organization">جهة</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full grad text-deep font-semibold px-6 py-4 rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-elec/25">
+            سجّل اهتمامك
+          </button>
+
+          <p id="formMsg" class="hidden text-sm text-turq text-center" role="status"></p>
+          <p class="text-xs text-muted/70 text-center leading-relaxed">التسجيل مجاني. بياناتك تُستخدم للتواصل معك فقط.</p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="relative border-t border-white/5 py-16 overflow-hidden">
+  <svg class="absolute inset-x-0 top-0 w-full h-[90px] opacity-50" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 L1440,0 L1440,34 C1290,58 1160,20 1000,36 C840,52 742,86 580,72 C430,59 320,26 180,38 C110,44 48,56 0,66 Z" fill="#0A0F2C"/>
+  </svg>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid md:grid-cols-3 gap-12">
+
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.svg" alt="" class="h-8 w-auto" width="59" height="36">
+          <span class="text-xl font-bold">صقل</span>
+        </div>
+        <p class="mt-5 text-sm text-muted leading-loose max-w-xs">
+          مبادرة غير ربحية في منطقة حائل تبني قدرات الشباب في الذكاء الاصطناعي، وتنقلهم من الوعي إلى الإنتاج.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold">روابط</h3>
+        <ul class="mt-5 space-y-3 text-sm text-muted">
+          <li><a href="#about"  class="hover:text-white transition-colors">عن المبادرة</a></li>
+          <li><a href="#offer"  class="hover:text-white transition-colors">ما نقدّمه</a></li>
+          <li><a href="#record" class="hover:text-white transition-colors">سجلّنا</a></li>
+          <li><a href="#join"   class="hover:text-white transition-colors">انضم إلينا</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold">تواصل معنا</h3>
+        <!-- CONTACT PLACEHOLDERS: replace email + social links -->
+        <a href="mailto:hello@saqel.sa" class="mt-5 inline-flex items-center gap-2 text-sm text-muted hover:text-white transition-colors" dir="ltr">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg>
+          hello@saqel.sa
+        </a>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#" aria-label="إكس" class="glass w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23.2 22h-6.6l-5.1-6.7L5.6 22H2.5l7.6-8.7L1.2 2h6.8l4.6 6.1L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z"/></svg>
+          </a>
+          <a href="#" aria-label="لينكدإن" class="glass w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4V9Z"/></svg>
+          </a>
+          <a href="#" aria-label="إنستقرام" class="glass w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted/70">
+      <p>© <span id="year">2026</span> صقل · جميع الحقوق محفوظة</p>
+      <p>منطقة حائل، المملكة العربية السعودية</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Nav: glass on scroll ---- */
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    navbar.classList.toggle('glass', window.scrollY > 24);
+    navbar.classList.toggle('shadow-lg', window.scrollY > 24);
+    navbar.classList.toggle('shadow-black/20', window.scrollY > 24);
+  }
+
+  /* ---- Parallax on the Hail landscape ---- */
+  var layers = Array.prototype.slice.call(document.querySelectorAll('.parallax'));
+  var ticking = false;
+  function paint() {
+    var y = window.scrollY;
+    for (var i = 0; i < layers.length; i++) {
+      var d = parseFloat(layers[i].getAttribute('data-depth')) || 0;
+      layers[i].style.transform = 'translate3d(0,' + (y * d).toFixed(1) + 'px,0)';
+    }
+    ticking = false;
+  }
+  function onFrame() {
+    onScroll();
+    if (!reduce && !ticking) { ticking = true; requestAnimationFrame(paint); }
+  }
+  window.addEventListener('scroll', onFrame, { passive: true });
+  onFrame();
+
+  /* ---- Mobile menu ---- */
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', function () {
+    var open = menu.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---- Scroll reveal ---- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- Count-up ---- */
+  var counters = document.querySelectorAll('[data-count]');
+  function fmt(n, suffix) { return n.toLocaleString('en-US') + suffix; }
+  function runCount(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduce) { el.textContent = fmt(target, suffix); return; }
+    var start = performance.now(), dur = 1500;
+    function step(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased), p < 1 ? '' : suffix);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+    });
+  }
+
+  /* ---- Form (front-end only) ---- */
+  var form = document.getElementById('joinForm');
+  var msg = document.getElementById('formMsg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('f-name').value.trim();
+    var contact = document.getElementById('f-contact').value.trim();
+    var type = document.getElementById('f-type').value;
+
+    if (!name || !contact || !type) {
+      msg.textContent = 'الرجاء تعبئة جميع الحقول.';
+      msg.className = 'text-sm text-center text-sky';
+      return;
+    }
+    /* TODO: send to a real endpoint (Tally, Formspree, Google Sheet, or the initiative's CRM). */
+    msg.textContent = 'تم استلام تسجيلك. سنتواصل معك قريباً.';
+    msg.className = 'text-sm text-center text-turq';
+    form.reset();
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
