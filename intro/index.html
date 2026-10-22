@@ -271,7 +271,8 @@
   .fout pre { margin: 0; font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap; direction: rtl; }
 
   /* team + end */
-  .team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 40px; }
+  .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 40px; }
+  .team .member { flex: 0 1 calc(25% - 11px); min-width: 0; }
   .member { border-radius: 26px; background: var(--surface); box-shadow: var(--shadow-s); padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
   .member .avatar { width: 62px; height: 62px; font-size: 22px; }
   .member h3 { font-size: 16.5px; }
@@ -286,7 +287,7 @@
     .tline, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
     .tline::before, .steps::before { display: none; }
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .team .member { flex-basis: calc(50% - 7px); }
     .fout { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
@@ -692,12 +693,14 @@
 <section id="team">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">الفريق</span>
+      <span class="eyebrow">مجلس الإدارة</span>
       <h2 class="h2"><span class="l2">من حائل،</span><span class="l2 grad">ولأجل حائل.</span></h2>
     </div>
     <div class="team">
       <div class="member rv"><span class="avatar t-sand">ع</span><h3>عبدالعزيز العثمان</h3><p>رئيس مجلس الإدارة، مسؤول الشراكات</p></div>
       <div class="member rv"><span class="avatar t-blue">م</span><h3>مصعب الفريدي</h3><p>نائب رئيس مجلس الإدارة والرئيس التنفيذي</p></div>
+      <div class="member rv"><span class="avatar t-sky">ع</span><h3>عبدالله الصقعبي</h3><p>عضو مجلس الإدارة، الرئيس التنفيذي لـ Bluerays Holdings</p></div>
+      <div class="member rv"><span class="avatar t-green">أ</span><h3>د. أمجد الجنباز</h3><p>عضو مجلس الإدارة، مدير البرامج غير الربحية في مؤسسة مسك</p></div>
       <div class="member rv"><span class="avatar t-teal">ر</span><h3>رايد الشمري</h3><p>عضو مجلس الإدارة، البرنامج والمحتوى</p></div>
       <div class="member rv"><span class="avatar t-violet">ر</span><h3>رهف الحيص</h3><p>عضوة مجلس الإدارة، المتطوعون</p></div>
       <div class="member rv"><span class="avatar t-green">ب</span><h3>البتول الرشدان</h3><p>عضوة مجلس الإدارة، الإعلام والتسويق</p></div>
