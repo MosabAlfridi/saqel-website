@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="جمعية صقل: حكايتها ورسالتها وأهدافها، ورحلة المستفيد في برنامجها، ومفاهيم تطبيق الذكاء الاصطناعي.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>جمعية صقل</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Light only, at Musab's request. Layout: a long landing page; each section opens with an eyebrow and a two-tone headline,
+     then its own drawn illustration; elements rise into place as the reader scrolls. Every shape is rounded. */
+  :root {
+    color-scheme: light;
+    --bg: #FBFAF7; --surface: #FFFFFF; --ink: #141A33; --muted: #5A6283; --line: #E9E6DE; --soft: #F3F1EB;
+    --brand: #2F5BEA; --brand2: #12B3A2;
+    --blue: #E4ECFF; --blue-ink: #2F5BEA; --sky: #DFF2FC; --sky-ink: #1E88C8; --teal: #DDF5EE; --teal-ink: #0F9F84;
+    --sand: #FBEBD9; --sand-ink: #C27428; --violet: #ECE6FB; --violet-ink: #6A4FC9; --green: #E3F3E7; --green-ink: #2E8B57;
+    --shadow: 0 18px 40px rgba(20, 26, 51, .08); --shadow-s: 0 6px 16px rgba(20, 26, 51, .07);
+    --display: "Readex Pro", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --body: "IBM Plex Sans Arabic", "Readex Pro", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.75; direction: rtl; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+  h1, h2, h3, h4 { font-family: var(--display); line-height: 1.2; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 12px; }
+  .wrap { max-width: 1140px; margin-inline: auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+  .ic { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .t-blue { background: var(--blue); color: var(--blue-ink); } .t-sky { background: var(--sky); color: var(--sky-ink); }
+  .t-teal { background: var(--teal); color: var(--teal-ink); } .t-sand { background: var(--sand); color: var(--sand-ink); }
+  .t-violet { background: var(--violet); color: var(--violet-ink); } .t-green { background: var(--green); color: var(--green-ink); }
+  .grad { background: linear-gradient(100deg, var(--brand), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* progress + nav */
+  .progress { position: fixed; top: env(safe-area-inset-top, 0px); right: 0; height: 3px; width: 0; z-index: 40; background: linear-gradient(to left, var(--brand), var(--brand2)); border-radius: 0 0 0 3px; }
+  .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; gap: 18px; padding-block: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 21px; color: var(--ink); text-decoration: none; }
+  .brand svg { width: 38px; height: auto; }
+  .links { display: flex; gap: 6px; margin-inline-start: auto; overflow-x: auto; scrollbar-width: none; }
+  .links a { flex: none; text-decoration: none; color: var(--muted); font-family: var(--display); font-weight: 500; font-size: 15px; padding: 7px 14px; border-radius: 999px; transition: background .2s, color .2s; }
+  .links a:hover { color: var(--ink); }
+  .links a.on { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-s); }
+
+  /* shared section bits */
+  section { padding-block: 96px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--brand); }
+  .h2 { font-size: clamp(34px, 5.4vw, 60px); font-weight: 700; margin-top: 12px; }
+  .h2 .l2 { display: block; }
+  .sub { color: var(--muted); font-size: clamp(17px, 2vw, 20px); margin-top: 16px; max-width: 58ch; }
+  .center { text-align: center; } .center .sub { margin-inline: auto; }
+
+  /* reveal: content is visible at rest; scrolling lifts it into place */
+  .rv { transition: transform .8s cubic-bezier(.2, .75, .2, 1), opacity .8s; }
+  html.js .rv.pre { opacity: .45; transform: translateY(28px) scale(.985); }
+
+  /* hero */
+  .hero { padding-block: 72px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1;
+    background-image: radial-gradient(circle at 1px 1px, var(--line) 1.2px, transparent 0); background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%); }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-s); font-size: 14px; font-family: var(--display); font-weight: 500; }
+  .chip i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: var(--blue-ink); font-style: normal; }
+  .hero h1 { font-size: clamp(42px, 8vw, 92px); font-weight: 700; margin-top: 22px; letter-spacing: -.01em; }
+  .hero h1 span { display: block; }
+  .hero .sub { margin: 22px auto 0; font-size: clamp(18px, 2.2vw, 22px); }
+  .ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 17px; padding: 13px 24px; border-radius: 999px; }
+  .btn.primary { background: var(--brand); color: #fff; box-shadow: 0 12px 26px rgba(47, 91, 234, .28); }
+  .btn.ghost { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-s); }
+  .btn .ic { font-size: 19px; }
+
+  /* hero mockup: an example trainee journey */
+  .mock { margin: 56px auto 0; max-width: 980px; border-radius: 30px; background: var(--surface); box-shadow: var(--shadow); padding: 18px; text-align: right;
+          display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+  .mock .bar { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; padding: 4px 8px 12px; border-bottom: 1px solid var(--line); }
+  .mock .bar b { font-family: var(--display); font-size: 17px; }
+  .mock .bar .tag { margin-inline-start: auto; font-size: 13px; padding: 3px 10px; border-radius: 999px; }
+  .who { display: flex; align-items: center; gap: 12px; }
+  .avatar { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 18px; flex: none; }
+  .who b { display: block; font-family: var(--display); font-size: 17px; }
+  .who span { font-size: 14px; color: var(--muted); }
+  .jlist { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .jlist li { display: flex; align-items: center; gap: 12px; border-radius: 16px; padding: 9px 12px; background: var(--soft); font-size: 15px; }
+  .jlist li .st { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; font-size: 14px; }
+  .jlist li .meta { margin-inline-start: auto; font-size: 13px; color: var(--muted); }
+  .jlist li.now { background: var(--sand); }
+  .side { display: flex; flex-direction: column; gap: 12px; }
+  .mini { border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .mini small { font-size: 13px; font-weight: 600; opacity: .8; }
+  .mini b { font-family: var(--display); font-size: 17px; line-height: 1.4; }
+  .mini .meter { height: 8px; border-radius: 8px; background: color-mix(in srgb, currentColor 18%, transparent); overflow: hidden; }
+  .mini .meter i { display: block; height: 100%; width: 72%; border-radius: 8px; background: currentColor; transition: width 1.4s cubic-bezier(.2,.75,.2,1); }
+  html.js .mini .meter i.zero { width: 8%; }
+  .example { font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  .incub { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 46px; color: var(--muted); font-family: var(--display); font-size: 15px; }
+  .incub b { color: var(--ink); }
+
+  /* problem cards */
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
+  .pcard { border-radius: 28px; background: var(--surface); box-shadow: var(--shadow-s); padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .art { border-radius: 20px; background: var(--soft); height: 190px; position: relative; overflow: hidden; display: grid; place-items: center; }
+  .pcard h3 { font-size: 21px; font-weight: 600; margin-top: 6px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .pcard h3 .stat { font-size: 15px; padding: 2px 10px; border-radius: 999px; }
+  .pcard p { color: var(--muted); font-size: 16px; }
+
+  /* art pieces */
+  .bubbles { display: flex; flex-direction: column; gap: 8px; width: 74%; }
+  .bubbles span { border-radius: 16px; padding: 8px 12px; font-size: 13.5px; width: fit-content; max-width: 90%; box-shadow: var(--shadow-s); background: var(--surface); }
+  .bubbles span.me { align-self: flex-start; background: var(--blue); color: var(--blue-ink); }
+  .bubbles span.ai { align-self: flex-end; }
+  .pins { position: absolute; inset: 0; }
+  .pin { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--display); font-weight: 600; font-size: 13px; }
+  .pin .dotp { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--shadow-s); }
+  .rows { width: 76%; display: flex; flex-direction: column; gap: 9px; }
+  .rows span { height: 22px; border-radius: 999px; background: color-mix(in srgb, var(--muted) 14%, transparent); }
+  .rows span.hit { background: var(--sand); outline: 2px dashed var(--sand-ink); outline-offset: 3px; }
+  .q { position: absolute; top: 18px; left: 22px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-family: var(--display); }
+  .flow { display: flex; align-items: center; gap: 12px; }
+  .flow .box { width: 82px; height: 96px; border-radius: 18px; display: grid; place-items: center; box-shadow: var(--shadow-s); }
+  .flow .box .ic { font-size: 34px; }
+  .flow .box.empty { background: var(--surface); border: 2px dashed var(--line); color: var(--muted); font-family: var(--display); font-size: 30px; font-weight: 700; }
+  svg.dash { overflow: visible; }
+  .ants { stroke-dasharray: 6 8; }
+  .in .ants, .ants.go { animation: ants 1.2s linear infinite; }
+  @keyframes ants { to { stroke-dashoffset: -28; } }
+
+  /* story timeline */
+  .tline { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 56px; }
+  .tline::before { content: ""; position: absolute; top: 158px; right: 8%; left: 8%; border-top: 3px dashed var(--line); }
+  .tstep { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; min-width: 0; }
+  .tvis { height: 136px; width: 100%; display: grid; place-items: end center; }
+  .tdot { width: 22px; height: 22px; border-radius: 50%; border: 5px solid var(--bg); position: relative; z-index: 1; box-shadow: 0 0 0 2px currentColor; background: currentColor; }
+  .tstep .yr { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .tstep h3 { font-size: 19px; font-weight: 600; }
+  .tstep p { font-size: 14.5px; color: var(--muted); }
+  .badge { border-radius: 18px; padding: 10px 14px; box-shadow: var(--shadow-s); background: var(--surface); font-size: 13.5px; text-align: right; display: flex; flex-direction: column; gap: 4px; min-width: 0; max-width: 100%; }
+  .badge b { font-family: var(--display); font-size: 22px; line-height: 1.1; }
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 74px; }
+  .bars i { width: 16px; border-radius: 6px 6px 3px 3px; background: var(--sky-ink); opacity: .75; transition: height 1s cubic-bezier(.2,.75,.2,1); }
+
+  /* mission */
+  .mission { border-radius: 36px; background: var(--surface); box-shadow: var(--shadow); padding: clamp(28px, 5vw, 60px); text-align: center; position: relative; overflow: hidden; }
+  .mission::after { content: ""; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: var(--teal); opacity: .5; top: -150px; left: -120px; z-index: 0; }
+  .mission::before { content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: var(--blue); opacity: .6; bottom: -140px; right: -90px; z-index: 0; }
+  .mission > * { position: relative; z-index: 1; }
+  .mission blockquote { margin: 14px auto 0; max-width: 30ch; font-family: var(--display); font-size: clamp(25px, 3.6vw, 40px); line-height: 1.55; font-weight: 600; }
+  .goals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+  .goal { border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .goal .gicon { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; background: var(--surface); box-shadow: var(--shadow-s); }
+  .goal .gicon .ic { font-size: 26px; }
+  .goal h3 { font-size: 21px; }
+  .goal p { font-size: 15.5px; color: var(--ink); opacity: .85; }
+
+  /* pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
+  .crowd { position: relative; width: 210px; height: 150px; }
+  .crowd .p { position: absolute; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 15px; box-shadow: var(--shadow-s); }
+  .course { width: 78%; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-s); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .course b { font-family: var(--display); font-size: 15px; }
+  .days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .days span { font-size: 11.5px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .days span i { width: 100%; height: 34px; border-radius: 8px; background: var(--blue); position: relative; overflow: hidden; }
+  .days span i::after { content: ""; position: absolute; inset: auto 0 0 0; height: 100%; background: var(--blue-ink); opacity: .55; transform-origin: bottom; transition: transform .8s; }
+  html.js .pre .days span i::after { transform: scaleY(.1); }
+  .lab { display: flex; align-items: center; gap: 10px; }
+  .lab .tk { border-radius: 16px; padding: 10px 12px; box-shadow: var(--shadow-s); background: var(--surface); font-size: 13px; width: 120px; display: flex; flex-direction: column; gap: 4px; }
+  .lab .tk b { font-family: var(--display); font-size: 14px; }
+
+  /* program */
+  .stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
+  .stat { border-radius: 24px; padding: 18px 16px; text-align: center; }
+  .stat b { display: block; font-family: var(--display); font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 14.5px; }
+  .steps { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 64px; }
+  .steps::before { content: ""; position: absolute; top: 162px; right: 6%; left: 6%; border-top: 3px dashed var(--line); }
+  .step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; min-width: 0; }
+  .svis { height: 140px; width: 100%; display: grid; place-items: end center; }
+  .snum { font-family: var(--mono); font-size: 13px; }
+  .step h3 { font-size: 19px; }
+  .step p { font-size: 14px; color: var(--muted); }
+  .dots { display: grid; grid-template-columns: repeat(8, 10px); gap: 6px; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--muted) 22%, transparent); transition: background .4s; }
+  .in .dots i.sel, .dots.lit i.sel { background: var(--blue-ink); }
+  .team3 { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .team3 .row { display: flex; }
+  .team3 .row .avatar { width: 36px; height: 36px; font-size: 13px; border: 3px solid var(--bg); margin-inline-start: -10px; }
+  .podium { display: flex; align-items: flex-end; gap: 6px; }
+  .podium span { width: 38px; border-radius: 10px 10px 4px 4px; display: grid; place-items: start center; padding-top: 6px; font-family: var(--display); font-weight: 700; font-size: 15px; transition: height .9s cubic-bezier(.2,.75,.2,1); }
+  .offer { border-radius: 16px; background: var(--surface); box-shadow: var(--shadow-s); padding: 10px 12px; font-size: 13px; text-align: right; display: flex; flex-direction: column; gap: 4px; width: 92%; }
+  .offer b { font-family: var(--display); font-size: 14px; }
+  .offer .ok { display: inline-flex; gap: 6px; align-items: center; color: var(--green-ink); font-weight: 600; }
+  .compare { margin-top: 64px; border-radius: 30px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+  .compare .scroll { overflow-x: auto; }
+  .compare table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .compare th, .compare td { padding: 16px 20px; text-align: right; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+  .compare th { font-family: var(--display); font-size: 17px; }
+  .compare th:first-child, .compare td:first-child { color: var(--muted); font-size: 14px; width: 20%; }
+  .compare tr:last-child td { border-bottom: 0; }
+  .compare .hdr-tech { color: var(--blue-ink); } .compare .hdr-app { color: var(--teal-ink); }
+
+  /* AI */
+  .aigrid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 40px; align-items: center; }
+  .checks { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; }
+  .checks li .ic { color: var(--teal-ink); font-size: 20px; margin-top: 4px; }
+  .chat { border-radius: 30px; background: var(--surface); box-shadow: var(--shadow); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .chat .head { display: flex; align-items: center; gap: 10px; padding: 4px 6px 12px; border-bottom: 1px solid var(--line); font-family: var(--display); font-weight: 600; }
+  .chat .head .ic { color: var(--violet-ink); font-size: 20px; }
+  .msg { border-radius: 18px; padding: 10px 14px; font-size: 15px; max-width: 88%; transition: opacity .5s, transform .5s; }
+  .msg.user { align-self: flex-start; background: var(--brand); color: #fff; }
+  .msg.bot { align-self: flex-end; background: var(--soft); }
+  .msg.tool { align-self: flex-end; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+  .msg.tool .ic { font-size: 18px; }
+  .msg.tool .ok { color: var(--green-ink); margin-inline-start: 6px; }
+  html.js .chat.pre .msg, html.js .chat .msg.wait { opacity: .25; transform: translateY(10px); }
+
+  .concepts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 56px; }
+  .ccard { border-radius: 28px; background: var(--surface); box-shadow: var(--shadow-s); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .ccard.wide { grid-column: 1 / -1; }
+  .ccard .top { display: flex; align-items: center; gap: 12px; }
+  .ccard .top .ico { width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center; flex: none; }
+  .ccard .top .ico .ic { font-size: 22px; }
+  .ccard h3 { font-size: 22px; }
+  .ccard p { color: var(--muted); font-size: 15.5px; }
+  .seg { display: inline-flex; padding: 4px; gap: 4px; border-radius: 999px; background: var(--soft); width: fit-content; }
+  .seg button { border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; font-size: 14.5px; color: var(--muted); }
+  .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-s); }
+  .bub { border-radius: 18px; padding: 12px 14px; font-size: 15px; }
+  .bub small { display: block; font-size: 12.5px; font-weight: 600; opacity: .75; margin-bottom: 2px; }
+  .win { display: flex; height: 30px; border-radius: 999px; overflow: hidden; background: var(--soft); }
+  .win i { display: block; height: 100%; transition: width 1s cubic-bezier(.2,.75,.2,1); }
+  html.js .pre .win i { width: 0 !important; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; color: var(--muted); }
+  .legend b { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-inline-end: 6px; vertical-align: middle; }
+  .code { border-radius: 18px; background: #161B33; color: #E6E9F5; padding: 14px 16px; font-family: var(--mono); font-size: 13.5px; line-height: 1.75; direction: rtl; min-height: 210px; white-space: pre-wrap; }
+  .code .h { color: #9DB8FF; } .code .b { color: #7FE3CB; }
+  .code .cursor { display: inline-block; width: 8px; height: 1.1em; background: #9DB8FF; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hub { position: relative; height: 270px; }
+  .hub svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hub .node { position: absolute; transform: translate(50%, -50%); border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; background: transparent; font-family: var(--display); font-weight: 600; font-size: 13px; }
+  .hub .node i { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--shadow-s); font-style: normal; transition: transform .2s; }
+  .hub .node i .ic { width: 24px; height: 24px; font-size: 24px; }
+  .hub .node > span { white-space: nowrap; }
+  .hub .node[aria-pressed="true"] i { transform: scale(1.12); box-shadow: 0 0 0 4px var(--surface), 0 0 0 6px currentColor; }
+  .hub .core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78px; height: 78px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; box-shadow: var(--shadow); }
+  .hub .core .ic { font-size: 32px; }
+  .choices { display: flex; flex-direction: column; gap: 8px; }
+  .choice { text-align: right; border: 1px solid var(--line); background: var(--soft); border-radius: 16px; padding: 10px 14px; cursor: pointer; font-size: 15px; }
+  .choice[data-state="right"] { background: var(--green); color: var(--green-ink); border-color: transparent; }
+  .choice[data-state="wrong"] { background: var(--sand); color: var(--sand-ink); border-color: transparent; }
+  .fields { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fields button { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 8px 16px; cursor: pointer; font-size: 15px; }
+  .fields button[aria-pressed="true"] { background: var(--violet); color: var(--violet-ink); border-color: transparent; }
+  .fout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .fout > div { border-radius: 18px; background: var(--soft); padding: 12px 14px; min-width: 0; }
+  .fout small { display: block; font-size: 12.5px; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .fout pre { margin: 0; font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap; direction: rtl; }
+
+  /* team + end */
+  .team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 40px; }
+  .member { border-radius: 26px; background: var(--surface); box-shadow: var(--shadow-s); padding: 20px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .member .avatar { width: 62px; height: 62px; font-size: 22px; }
+  .member h3 { font-size: 16.5px; }
+  .member p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .end { border-radius: 40px; padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 60px); text-align: center; background: linear-gradient(135deg, var(--blue), var(--teal) 55%, var(--green)); }
+  .end h2 { font-size: clamp(32px, 5vw, 56px); }
+  footer { padding-block: 28px 40px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 900px) {
+    .mock, .aigrid { grid-template-columns: minmax(0, 1fr); }
+    .goals, .pillars { grid-template-columns: minmax(0, 1fr); }
+    .tline, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
+    .tline::before, .steps::before { display: none; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fout { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    section { padding-block: 64px; }
+    .grid2, .concepts { grid-template-columns: minmax(0, 1fr); }
+    .links a { padding: 6px 10px; font-size: 14px; }
+    .brand span { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html.js .rv.pre { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></symbol><symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8" />
+  <rect width="16" height="12" x="4" y="8" rx="2" />
+  <path d="M2 14h2" />
+  <path d="M20 14h2" />
+  <path d="M15 13v2" />
+  <path d="M9 13v2" /></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M19.967 17.484A4 4 0 0 1 18 18" /></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  <rect width="20" height="14" x="2" y="6" rx="2" /></symbol><symbol id="i-calendar-check" viewBox="0 0 24 24"><path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="m9 16 2 2 4-4" /></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" /></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" /></symbol><symbol id="i-flask-conical" viewBox="0 0 24 24"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2" />
+  <path d="M8.5 2h7" />
+  <path d="M7 16h10" /></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" /></symbol><symbol id="i-graduation-cap" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol><symbol id="i-hard-drive" viewBox="0 0 24 24"><line x1="22" x2="2" y1="12" y2="12" />
+  <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+  <line x1="6" x2="6.01" y1="16" y2="16" />
+  <line x1="10" x2="10.01" y1="16" y2="16" /></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+  <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+  <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="14" rx="1" />
+  <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+  <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-monitor-play" viewBox="0 0 24 24"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" />
+  <path d="M12 17v4" />
+  <path d="M8 21h8" />
+  <rect x="2" y="3" width="20" height="14" rx="2" /></symbol><symbol id="i-notebook-pen" viewBox="0 0 24 24"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4" />
+  <path d="M2 6h4" />
+  <path d="M2 10h4" />
+  <path d="M2 14h4" />
+  <path d="M2 18h4" />
+  <path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" /></symbol><symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5" />
+  <path d="M9 8V2" />
+  <path d="M15 8V2" />
+  <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" />
+  <path d="m21 21-4.3-4.3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+  <path d="M20 3v4" />
+  <path d="M22 5h-4" />
+  <path d="M4 17v2" />
+  <path d="M5 18H3" /></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+  <path d="M4 22h16" />
+  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></symbol><symbol id="i-user-check" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <polyline points="16 11 18 13 22 9" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol><symbol id="saqel-mark" viewBox="53.2 53.8 59.3 35.9"><path fill="url(#lg)" d="M112.490,82.214C112.490,85.924 109.480,88.934 105.760,88.934 103.540,88.934 101.580,87.864 100.370,86.204L99.640,84.974 87.150,63.964V63.954C86.550,62.954 86.210,61.784 86.210,60.534 86.210,56.824 89.220,53.814 92.930,53.814 95.650,53.814 97.826,55.448 99.040,57.724L111.120,78.164 111.940,79.554C112.300,80.374 112.490,81.264 112.490,82.214 M90.647,82.721C90.617,85.961 88.187,88.811 84.987,89.301 82.337,89.701 79.927,88.571 78.527,86.651L77.884,85.732C77.832,85.657 77.776,85.585 77.716,85.516 77.245,84.970 76.730,84.463 76.177,84.001 75.297,83.371 74.277,82.971 73.207,82.821 70.997,82.511 68.747,83.151 67.027,84.581L65.397,85.941C63.593,87.561 62.187,88.931 59.867,88.931 56.198,88.931 53.228,85.942 53.267,82.253 53.304,78.704 56.281,75.749 59.830,75.730 61.432,75.722 62.908,76.287 64.057,77.229 64.794,77.832 65.551,78.407 66.388,78.863 66.409,78.875 66.431,78.887 66.453,78.899 68.147,79.822 70.269,79.256 71.277,77.611 71.861,76.658 71.870,75.459 71.299,74.498L65.307,64.411V64.401C64.607,63.231 64.257,61.841 64.397,60.351 64.697,56.951 67.677,54.251 71.097,54.261 73.817,54.271 75.977,55.891 77.197,58.171L89.277,78.611 90.097,80.001C90.467,80.841 90.657,81.751 90.647,82.721" stroke="none"/></symbol></svg>
+
+<div class="progress" id="progress"></div>
+
+<nav class="nav" aria-label="الأقسام">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="53.2 53.8 59.3 35.9" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#183BFF"/><stop offset=".5" stop-color="#30A1FF"/><stop offset="1" stop-color="#00F0C2"/></linearGradient></defs><path fill="url(#lg)" d="M112.490,82.214C112.490,85.924 109.480,88.934 105.760,88.934 103.540,88.934 101.580,87.864 100.370,86.204L99.640,84.974 87.150,63.964V63.954C86.550,62.954 86.210,61.784 86.210,60.534 86.210,56.824 89.220,53.814 92.930,53.814 95.650,53.814 97.826,55.448 99.040,57.724L111.120,78.164 111.940,79.554C112.300,80.374 112.490,81.264 112.490,82.214 M90.647,82.721C90.617,85.961 88.187,88.811 84.987,89.301 82.337,89.701 79.927,88.571 78.527,86.651L77.884,85.732C77.832,85.657 77.776,85.585 77.716,85.516 77.245,84.970 76.730,84.463 76.177,84.001 75.297,83.371 74.277,82.971 73.207,82.821 70.997,82.511 68.747,83.151 67.027,84.581L65.397,85.941C63.593,87.561 62.187,88.931 59.867,88.931 56.198,88.931 53.228,85.942 53.267,82.253 53.304,78.704 56.281,75.749 59.830,75.730 61.432,75.722 62.908,76.287 64.057,77.229 64.794,77.832 65.551,78.407 66.388,78.863 66.409,78.875 66.431,78.887 66.453,78.899 68.147,79.822 70.269,79.256 71.277,77.611 71.861,76.658 71.870,75.459 71.299,74.498L65.307,64.411V64.401C64.607,63.231 64.257,61.841 64.397,60.351 64.697,56.951 67.677,54.251 71.097,54.261 73.817,54.271 75.977,55.891 77.197,58.171L89.277,78.611 90.097,80.001C90.467,80.841 90.657,81.751 90.647,82.721"/></svg>
+      <span>صقل</span>
+    </a>
+    <div class="links">
+      <a href="#story">حكايتنا</a>
+      <a href="#program">البرنامج</a>
+      <a href="#ai">الذكاء الاصطناعي</a>
+      <a href="#team">الفريق</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="chip"><i><svg class="ic"><use href="#i-map-pin"/></svg></i>جمعية أهلية · منطقة حائل</span>
+    <h1><span>من استخدام الأدوات</span><span class="grad">إلى بناء الحلول.</span></h1>
+    <p class="sub">صقل تبني قدرات شباب حائل في الذكاء الاصطناعي: تدريب على مشكلات حقيقية، وإرشاد من خبراء، وطريق واضح إلى الفرصة.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#program"><svg class="ic"><use href="#i-graduation-cap"/></svg>اكتشف البرنامج</a>
+      <a class="btn ghost" href="#story">اقرأ حكايتنا</a>
+    </div>
+
+    <div class="mock rv" aria-label="مثال توضيحي لرحلة متدرب">
+      <div class="bar"><svg class="ic" style="font-size:20px;color:var(--brand)"><use href="#i-target"/></svg><b>رحلة متدرب</b><span class="tag t-sand">مثال توضيحي</span></div>
+      <div>
+        <div class="who"><div class="avatar t-teal">س</div><div><b>سارة</b><span>طالبة تمريض · جامعة حائل · المسار التطبيقي</span></div></div>
+        <ul class="jlist">
+          <li><span class="st t-green"><svg class="ic"><use href="#i-user-check"/></svg></span>الويبينارات عن بُعد<span class="meta">5 ساعات</span></li>
+          <li><span class="st t-green"><svg class="ic"><use href="#i-user-check"/></svg></span>قُبلت ضمن أفضل 200<span class="meta">النسخة الأولى</span></li>
+          <li><span class="st t-green"><svg class="ic"><use href="#i-user-check"/></svg></span>دورة الذكاء الاصطناعي في الرعاية الصحية<span class="meta">25 ساعة</span></li>
+          <li class="now"><span class="st t-sand"><svg class="ic"><use href="#i-puzzle"/></svg></span>تحدٍّ حقيقي مع فريقها<span class="meta">الآن</span></li>
+          <li><span class="st" style="background:var(--soft);color:var(--muted)"><svg class="ic"><use href="#i-trophy"/></svg></span>منتدى صقل<span class="meta">قريباً</span></li>
+        </ul>
+      </div>
+      <div class="side">
+        <div class="mini t-sand"><small>التحدي</small><b>تقليل وقت انتظار الفرز في قسم الطوارئ</b><span style="font-size:13px">جهة صحية في حائل · فريق من 3</span><div class="meter"><i id="heroMeter" class="zero"></i></div></div>
+        <div class="mini t-blue"><small>المرشد</small><b>جلسة أسبوعية مع خبير في المعلوماتية الصحية</b></div>
+        <div class="mini t-violet"><small>بعد التخرج</small><b>متابعة بعد 3 و6 أشهر، وترشيح للفرص</b></div>
+      </div>
+    </div>
+    <p class="example">سارة شخصية توضيحية تشرح رحلة المستفيد، والتحدي مثال.</p>
+
+    <div class="incub"><span>محتضنة في</span><b>حاضنة مسك للمبادرات</b></div>
+  </div>
+</header>
+
+<!-- THE GAP -->
+<section id="gap">
+  <div class="wrap">
+    <span class="eyebrow">الفجوة</span>
+    <h2 class="h2"><span class="l2">يستخدمون الذكاء الاصطناعي كل يوم.</span><span class="l2 grad">وينقصهم الطريق.</span></h2>
+    <p class="sub">سألنا شباب حائل في استبيان ميداني عام 2026. الأدوات في أيديهم، والذي ينقص هو ما يحوّل الاستخدام إلى مهارة وفرصة.</p>
+    <div class="grid2">
+      <div class="pcard rv">
+        <div class="art"><div class="bubbles"><span class="me">لخّص لي هذا الدرس</span><span class="ai">هذا ملخص من خمس نقاط…</span><span class="me">اكتب لي إيميل</span><span class="ai">تفضل المسودة…</span></div></div>
+        <h3>استخدام بلا تطبيق <span class="stat t-blue">94% استخدموا الأدوات</span></h3>
+        <p>الاستخدام اليومي واسع، ويبقى محصوراً في مهام سريعة لا تبني مهارة في التخصص.</p>
+      </div>
+      <div class="pcard rv">
+        <div class="art">
+          <svg class="dash" viewBox="0 0 400 190" style="position:absolute;inset:0;width:100%;height:100%"><path class="ants" d="M300 120 C 240 30, 150 30, 90 80" fill="none" stroke="var(--sky-ink)" stroke-width="3"/></svg>
+          <div class="pins">
+            <div class="pin" style="right:16%;top:52%"><span class="dotp t-sky"><svg class="ic"><use href="#i-map-pin"/></svg></span>حائل</div>
+            <div class="pin" style="left:16%;top:30%"><span class="dotp" style="background:var(--surface);color:var(--muted)"><svg class="ic"><use href="#i-users"/></svg></span>الخبراء</div>
+          </div>
+        </div>
+        <h3>توجيه بعيد <span class="stat t-sky">90% بلا توجيه محلي كافٍ</span></h3>
+        <p>الخبراء والمرشدون والبرامج المتقدمة تتركز في المدن الكبرى، بعيداً عن شباب المنطقة.</p>
+      </div>
+      <div class="pcard rv">
+        <div class="art"><div class="rows"><span></span><span style="width:80%"></span><span class="hit" style="width:90%"></span><span style="width:70%"></span><span style="width:85%"></span></div><span class="q t-sand">؟</span></div>
+        <h3>فرص لا تصل <span class="stat t-sand">73% لا يصلون إليها بسهولة</span></h3>
+        <p>البرامج والهاكاثونات والوظائف موجودة، ولا يعرف كثيرون طريقهم إليها.</p>
+      </div>
+      <div class="pcard rv">
+        <div class="art"><div class="flow"><span class="box t-teal"><svg class="ic"><use href="#i-book-open"/></svg></span>
+          <svg class="dash" width="70" height="20" viewBox="0 0 70 20"><path class="ants" d="M66 10 H6" stroke="var(--teal-ink)" stroke-width="3" fill="none"/></svg>
+          <span class="box empty">؟</span></div></div>
+        <h3>تدريب لا ينتهي بمشروع <span class="stat t-teal">49% يرونه أكبر مانع</span></h3>
+        <p>غياب التدريب العملي المناسب في المنطقة هو أكبر مانع ذكره المشاركون.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">حكايتنا</span>
+      <h2 class="h2"><span class="l2">بدأنا قبل الاسم.</span><span class="l2 grad">ثم صارت صقل.</span></h2>
+      <p class="sub">فريق اشتغل على الأرض في حائل، ودرس الاحتياج من قرب، ثم أسس جمعية تحمل الفكرة إلى برنامج.</p>
+    </div>
+    <div class="tline">
+      <div class="tstep rv" style="color:var(--teal-ink)">
+        <div class="tvis"><div class="badge"><span style="color:var(--muted)">نادي الذكاء الاصطناعي</span><b data-to="60" data-pre="+">+60</b><span style="color:var(--muted)">نشاطاً، وحضور تجاوز 6,000</span></div></div>
+        <span class="tdot"></span><span class="yr">2024 · 2025</span><h3>الفريق في الميدان</h3><p>فعاليات ودورات ومشاركات في مؤتمرات المنطقة والمملكة.</p>
+      </div>
+      <div class="tstep rv" style="color:var(--sky-ink)">
+        <div class="tvis"><div class="badge"><span style="color:var(--muted)">استبيان ومجموعة تركيز</span><div class="bars"><i style="height:94%"></i><i style="height:90%"></i><i style="height:73%"></i><i style="height:49%"></i></div></div></div>
+        <span class="tdot"></span><span class="yr">2026</span><h3>سمعنا الشباب</h3><p>درسنا واقع الذكاء الاصطناعي لدى شباب حائل، وبنينا البرنامج على النتائج.</p>
+      </div>
+      <div class="tstep rv" style="color:var(--violet-ink)">
+        <div class="tvis"><div class="badge"><svg class="ic" style="font-size:30px;color:var(--violet-ink)"><use href="#i-sparkles"/></svg><b style="font-size:16px">حاضنة مسك للمبادرات</b></div></div>
+        <span class="tdot"></span><span class="yr">2026</span><h3>الاحتضان</h3><p>بنينا في الحاضنة نموذج الجمعية وبرنامجها وإطار قياس أثرها.</p>
+      </div>
+      <div class="tstep rv" style="color:var(--blue-ink)">
+        <div class="tvis"><div class="badge" style="align-items:center"><svg viewBox="53.2 53.8 59.3 35.9" style="width:64px;height:39px" aria-hidden="true"><path fill="url(#lg)" d="M112.490,82.214C112.490,85.924 109.480,88.934 105.760,88.934 103.540,88.934 101.580,87.864 100.370,86.204L99.640,84.974 87.150,63.964V63.954C86.550,62.954 86.210,61.784 86.210,60.534 86.210,56.824 89.220,53.814 92.930,53.814 95.650,53.814 97.826,55.448 99.040,57.724L111.120,78.164 111.940,79.554C112.300,80.374 112.490,81.264 112.490,82.214 M90.647,82.721C90.617,85.961 88.187,88.811 84.987,89.301 82.337,89.701 79.927,88.571 78.527,86.651L77.884,85.732C77.832,85.657 77.776,85.585 77.716,85.516 77.245,84.970 76.730,84.463 76.177,84.001 75.297,83.371 74.277,82.971 73.207,82.821 70.997,82.511 68.747,83.151 67.027,84.581L65.397,85.941C63.593,87.561 62.187,88.931 59.867,88.931 56.198,88.931 53.228,85.942 53.267,82.253 53.304,78.704 56.281,75.749 59.830,75.730 61.432,75.722 62.908,76.287 64.057,77.229 64.794,77.832 65.551,78.407 66.388,78.863 66.409,78.875 66.431,78.887 66.453,78.899 68.147,79.822 70.269,79.256 71.277,77.611 71.861,76.658 71.870,75.459 71.299,74.498L65.307,64.411V64.401C64.607,63.231 64.257,61.841 64.397,60.351 64.697,56.951 67.677,54.251 71.097,54.261 73.817,54.271 75.977,55.891 77.197,58.171L89.277,78.611 90.097,80.001C90.467,80.841 90.657,81.751 90.647,82.721"/></svg><b style="font-size:18px">جمعية صقل</b></div></div>
+        <span class="tdot"></span><span class="yr">2026</span><h3>وُلدت صقل</h3><p>جمعية أهلية متخصصة في بناء القدرات في الذكاء الاصطناعي.</p>
+      </div>
+      <div class="tstep rv" style="color:var(--sand-ink)">
+        <div class="tvis"><div class="badge" style="align-items:center"><svg class="ic" style="font-size:30px;color:var(--sand-ink)"><use href="#i-calendar"/></svg><b style="font-size:16px">النسخة الأولى</b></div></div>
+        <span class="tdot"></span><span class="yr">2027</span><h3>أول دفعة</h3><p>نجهّز النسخة الأولى من البرنامج، وتليها الثانية في السنة التالية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION + GOALS -->
+<section id="mission">
+  <div class="wrap">
+    <div class="mission rv">
+      <span class="eyebrow">رسالتنا</span>
+      <blockquote>نمكّن أفراد حائل من توظيف الذكاء الاصطناعي في مجالاتهم ليستثمروا كفاءات منطقتهم ومواردها، عبر رحلة تبدأ من التوعية وتصل بهم إلى <span class="grad">فرصة حقيقية.</span></blockquote>
+    </div>
+    <div class="goals">
+      <div class="goal t-blue rv"><span class="gicon"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>حائل منتجة للذكاء الاصطناعي</h3><p>تحويل حائل من منطقة مستهلكة لأدوات الذكاء الاصطناعي إلى منطقة منتجة له.</p></div>
+      <div class="goal t-teal rv"><span class="gicon"><svg class="ic"><use href="#i-graduation-cap"/></svg></span><h3>جاهزية لسوق العمل</h3><p>رفع جاهزية الطلاب والخريجين لسوق العمل، وتقليص الفجوة بين مخرجات التعليم واحتياج السوق.</p></div>
+      <div class="goal t-sand rv"><span class="gicon"><svg class="ic"><use href="#i-map-pin"/></svg></span><h3>حائل الخيار الأول</h3><p>بيئة محلية محفّزة تجعل البقاء والعمل في حائل الخيار الأول للكوادر، مع ربطهم بالفرص خارجها عند توفرها.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">ما نبنيه</span>
+      <h2 class="h2"><span class="l2">ثلاث ركائز.</span><span class="l2 grad">رحلة واحدة.</span></h2>
+    </div>
+    <div class="pillars">
+      <div class="pcard rv">
+        <div class="art">
+          <div class="crowd">
+            <svg class="dash" viewBox="0 0 210 150" style="position:absolute;inset:0"><path class="ants" d="M105 75 L40 30 M105 75 L170 28 M105 75 L28 112 M105 75 L182 116 M105 75 L105 140" stroke="var(--sky-ink)" stroke-width="2" fill="none"/></svg>
+            <span class="p t-blue" style="right:84px;top:54px">أ</span><span class="p t-sky" style="right:149px;top:8px">م</span><span class="p t-teal" style="right:19px;top:7px">ن</span>
+            <span class="p t-sand" style="right:161px;top:92px">ر</span><span class="p t-violet" style="right:7px;top:95px">ل</span><span class="p t-green" style="right:84px;top:118px">ع</span>
+          </div>
+        </div>
+        <h3>المجتمع</h3><p>لقاءات دورية تجمع المهتمين والممارسين والخبراء في حائل، وتساعد كل فرد على معرفة مستواه والمسار المناسب له.</p>
+      </div>
+      <div class="pcard rv">
+        <div class="art"><div class="course"><b>دورة متخصصة</b><span style="font-size:12.5px;color:var(--muted)">25 ساعة · 25 متدرباً</span>
+          <div class="days"><span><i></i>أحد</span><span><i></i>اثنين</span><span><i></i>ثلاثاء</span><span><i></i>أربعاء</span><span><i></i>خميس</span></div></div></div>
+        <h3>الأكاديمية</h3><p>دورات حضورية على مسارين: تقني لمن يبني حلول الذكاء الاصطناعي، وتطبيقي لمن يوظفه في تخصصه. كل دورة تنتهي بمشروع.</p>
+      </div>
+      <div class="pcard rv">
+        <div class="art"><div class="lab">
+          <div class="tk"><span style="color:var(--muted)">تحدٍّ</span><b>من جهة في حائل</b></div>
+          <svg class="dash" width="46" height="20" viewBox="0 0 46 20"><path class="ants" d="M44 10 H4" stroke="var(--teal-ink)" stroke-width="3" fill="none"/></svg>
+          <div class="tk t-teal"><span>حل</span><b>يبنيه فريق من 3</b></div></div></div>
+        <h3>مختبر الحلول</h3><p>جهات حائل تقدم تحديات حقيقية، وفرق المتدربين تبني لها حلولاً بإرشاد خبراء، وتتنافس أفضل الحلول في منتدى صقل.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">البرنامج</span>
+      <h2 class="h2"><span class="l2">من 1,000 مشارك</span><span class="l2 grad">إلى 50 فرصة.</span></h2>
+      <p class="sub">نسختان على 24 شهراً. في كل نسخة يمر المستفيد بست محطات، وفي كل محطة يتقدم الأفضل.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat t-blue"><b data-to="1000" data-fmt="1">1,000</b><span>مشارك عن بُعد</span></div>
+      <div class="stat t-sky"><b data-to="400">400</b><span>متدرب حضوري</span></div>
+      <div class="stat t-teal"><b data-to="128">128</b><span>مشروعاً تطبيقياً</span></div>
+      <div class="stat t-sand"><b data-to="48">48</b><span>فريقاً في منتدى صقل</span></div>
+      <div class="stat t-violet"><b data-to="50">50</b><span>خريجاً للفرص</span></div>
+    </div>
+
+    <div class="steps">
+      <div class="step rv" style="color:var(--blue-ink)">
+        <div class="svis"><div class="dots" id="dots"></div></div>
+        <span class="tdot"></span><span class="snum">01</span><h3>الويبينارات</h3><p>500 في كل نسخة، 5 ساعات عن بُعد، وينتقل أفضل 200.</p>
+      </div>
+      <div class="step rv" style="color:var(--sky-ink)">
+        <div class="svis"><div class="course" style="width:92%"><b style="font-size:13px">25 ساعة · 5 أيام</b><div class="days"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div></div></div>
+        <span class="tdot"></span><span class="snum">02</span><h3>الدورات الحضورية</h3><p>8 دورات في كل نسخة: 4 تقنية و4 تطبيقية، 25 متدرباً في الدورة.</p>
+      </div>
+      <div class="step rv" style="color:var(--teal-ink)">
+        <div class="svis"><div class="team3"><div class="row"><span class="avatar t-teal">ف</span><span class="avatar t-blue">ن</span><span class="avatar t-sand">ر</span></div><span class="chip" style="font-size:12.5px;padding:4px 10px">تحدٍّ من جهة في حائل</span></div></div>
+        <span class="tdot"></span><span class="snum">03</span><h3>تحدٍّ حقيقي</h3><p>فرق من 3 تبني حلولاً بإرشاد خبراء. 64 مشروعاً في كل نسخة.</p>
+      </div>
+      <div class="step rv" style="color:var(--sand-ink)">
+        <div class="svis"><div class="podium"><span class="t-sky" style="height:64px">2</span><span class="t-sand" style="height:92px">1</span><span class="t-teal" style="height:48px">3</span></div></div>
+        <span class="tdot"></span><span class="snum">04</span><h3>منتدى صقل</h3><p>أفضل 3 فرق من كل دورة، ومنافسة مستقلة لكل مسار، وحفل التخريج.</p>
+      </div>
+      <div class="step rv" style="color:var(--violet-ink)">
+        <div class="svis"><div class="offer"><b>فرصة تدريب</b><span style="color:var(--muted)">جهة شريكة في حائل</span><span class="ok"><svg class="ic"><use href="#i-user-check"/></svg>تم الترشيح</span></div></div>
+        <span class="tdot"></span><span class="snum">05</span><h3>الفرص</h3><p>ترشيح 50 خريجاً متميزاً للتدريب والتوظيف.</p>
+      </div>
+      <div class="step rv" style="color:var(--green-ink)">
+        <div class="svis"><svg viewBox="0 0 150 100" style="width:92%;max-width:150px;overflow:visible">
+          <path d="M8 86 C 40 80, 60 60, 75 50 S 120 22, 142 14" fill="none" stroke="var(--green-ink)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="75" cy="50" r="6" fill="var(--green-ink)"/><circle cx="142" cy="14" r="6" fill="var(--green-ink)"/>
+          <text x="75" y="74" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="IBM Plex Sans Arabic, sans-serif">3 أشهر</text>
+          <text x="138" y="38" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="IBM Plex Sans Arabic, sans-serif">6 أشهر</text></svg></div>
+        <span class="tdot"></span><span class="snum">06</span><h3>المتابعة</h3><p>نقيس ما تغيّر بعد التخرج، وتقرير أثر لكل نسخة.</p>
+      </div>
+    </div>
+
+    <div class="compare rv">
+      <div class="scroll">
+        <table>
+          <thead><tr><th>مساران مستقلان</th><th class="hdr-tech">المسار التقني</th><th class="hdr-app">المسار التطبيقي</th></tr></thead>
+          <tbody>
+            <tr><td>لمن</td><td>طلاب وخريجو التخصصات التقنية: علوم الحاسب والهندسة ونظم المعلومات</td><td>طلاب وخريجو بقية التخصصات: الصحة والتعليم والإدارة والسياحة وغيرها</td></tr>
+            <tr><td>ماذا يتعلم</td><td>بناء حلول الذكاء الاصطناعي: النماذج والبيانات والوكلاء الأذكياء وربط الأدوات</td><td>توظيف أدوات الذكاء الاصطناعي في تخصصه: السياق والملفات وربط الأدوات وأتمتة المهام</td></tr>
+            <tr><td>ماذا يبني</td><td>نموذجاً أولياً يعمل لتحدٍّ من جهة في حائل</td><td>حلاً عملياً يوفّر وقتاً أو يحسّن خدمة في جهة حقيقية</td></tr>
+            <tr><td>الدورات</td><td>4 في كل نسخة، 25 ساعة في 5 أيام</td><td>4 في كل نسخة، 25 ساعة في 5 أيام</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="aigrid">
+      <div>
+        <span class="eyebrow">الذكاء الاصطناعي في عملك</span>
+        <h2 class="h2"><span class="l2">مساعد يفهم عملك</span><span class="l2 grad">وينفّذ معك.</span></h2>
+        <p class="sub">هذه الصفحة بُنيت في محادثة واحدة مع مساعد ذكاء اصطناعي، في نفس اليوم الذي راجعنا فيه أوراق عمل مسك. هذا ما فعله المساعد معنا في ذلك اليوم:</p>
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-user-check"/></svg>بنى العرض الفني والمالي في Excel وتحقق من تطابق أرقامه</li>
+          <li><svg class="ic"><use href="#i-user-check"/></svg>قرأ ملفاً من Google Drive وعدّله وشاركه مع الفريق</li>
+          <li><svg class="ic"><use href="#i-user-check"/></svg>تحقق من برامج الجهات المانحة في الويب مع المصادر</li>
+          <li><svg class="ic"><use href="#i-user-check"/></svg>صمم الإنفوجرافيك وملف التعريف وهذه الصفحة</li>
+        </ul>
+      </div>
+      <div class="chat rv" id="chat" aria-label="مثال محادثة مع المساعد">
+        <div class="head"><svg class="ic"><use href="#i-bot"/></svg>المساعد</div>
+        <div class="msg user">عدّل ورقتي العمل 2 و3 في ملف عبدالعزيز، وشاركه معه.</div>
+        <div class="msg tool"><svg class="ic" style="color:var(--blue-ink)"><use href="#i-hard-drive"/></svg>قرأ الملف من Google Drive<span class="ok">✓</span></div>
+        <div class="msg tool"><svg class="ic" style="color:var(--sky-ink)"><use href="#i-globe"/></svg>تحقق من 6 جهات مانحة في الويب<span class="ok">✓</span></div>
+        <div class="msg tool"><svg class="ic" style="color:var(--violet-ink)"><use href="#i-file-text"/></svg>عدّل الشرائح وراجعها بصيغة PDF<span class="ok">✓</span></div>
+        <div class="msg tool"><svg class="ic" style="color:var(--teal-ink)"><use href="#i-users"/></svg>شارك مستنداً مع عبدالعزيز<span class="ok">✓</span></div>
+        <div class="msg bot">تم. بقيت ثلاث نقاط تحتاج تأكيد عبدالعزيز: اسم الهاكاثون، والرعاة، ورقما الورش والحضور.</div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:96px">
+      <span class="eyebrow">المفاهيم</span>
+      <h2 class="h2"><span class="l2">خمسة مفاهيم</span><span class="l2 grad">تكفيك لتبدأ.</span></h2>
+    </div>
+    <div class="concepts">
+      <div class="ccard rv">
+        <div class="top"><span class="ico t-blue"><svg class="ic"><use href="#i-brain"/></svg></span><h3>السياق</h3></div>
+        <p>كل ما يراه النموذج لحظة الإجابة: تعليماتك، والملفات، والمحادثة، ونتائج الأدوات. تخيّل موظفاً جديداً ذكياً جداً يبدأ كل يوم بلا ذاكرة. جودة عمله على قدر ما تعطيه.</p>
+        <div class="bub" style="background:var(--soft)"><small>الطلب نفسه</small>اكتب لي سطرين تعريفاً بجمعيتنا.</div>
+        <div class="seg" role="group" aria-label="مستوى السياق"><button id="ctx-no" aria-pressed="false">بدون سياق</button><button id="ctx-yes" aria-pressed="true">مع سياق</button></div>
+        <div class="bub t-blue" id="ctx-out"></div>
+      </div>
+      <div class="ccard rv">
+        <div class="top"><span class="ico t-sky"><svg class="ic"><use href="#i-layers"/></svg></span><h3>نافذة السياق</h3></div>
+        <p>مساحة محددة يقرأ فيها النموذج كل شيء دفعة واحدة. حين تطول المحادثة يُلخَّص أولها وتضيع تفاصيل، لذلك نحفظ ما يهم في ملفات ثابتة.</p>
+        <div class="win" id="win"></div>
+        <div class="legend" id="legend"></div>
+        <div class="bub" style="background:var(--soft)" id="win-out"></div>
+      </div>
+      <div class="ccard rv" id="mdcard">
+        <div class="top"><span class="ico t-teal"><svg class="ic"><use href="#i-file-text"/></svg></span><h3>ملف md</h3></div>
+        <p>نص عادي بعلامات بسيطة: # للعنوان، و- للنقطة، و**نص** للعريض. أهم ملف عندنا CLAUDE.md: يقرؤه المساعد في بداية كل محادثة، ففيه من نحن وقواعد العمل.</p>
+        <div class="code" id="code" aria-label="مثال ملف CLAUDE.md"></div>
+      </div>
+      <div class="ccard rv">
+        <div class="top"><span class="ico t-sand"><svg class="ic"><use href="#i-plug"/></svg></span><h3>MCP</h3></div>
+        <p>اختصار Model Context Protocol: منفذ موحّد يوصل المساعد بأدواتك، مثل منفذ USB-C الذي يشحن أي جهاز. اضغط على أداة لترى ما فعلناه بها.</p>
+        <div class="hub" id="hub"><svg class="dash" id="hubsvg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg><span class="core"><svg class="ic"><use href="#i-bot"/></svg></span></div>
+        <div class="bub t-sand" id="hub-out"></div>
+      </div>
+      <div class="ccard wide rv">
+        <div class="top"><span class="ico t-green"><svg class="ic"><use href="#i-user-check"/></svg></span><h3>أنت في الحلقة</h3></div>
+        <p>المساعد يسرّع العمل، والقرار يبقى لك. أي رقم أو اسم أو تاريخ يحتاج مصدراً قبل أن يخرج للناس. جرّب: كتب المساعد في ملف تعريفي «حضر فعالياتنا أكثر من 6,000 زائر». ماذا تفعل؟</p>
+        <div class="choices" id="quiz">
+          <button class="choice" data-ok="0">أنشره كما هو، المساعد يعرف</button>
+          <button class="choice" data-ok="1">أطلب مصدر الرقم وأتحقق منه</button>
+          <button class="choice" data-ok="0">أحذف الرقم احتياطاً</button>
+        </div>
+        <div class="bub t-green" id="quiz-out" hidden></div>
+      </div>
+      <div class="ccard wide rv">
+        <div class="top"><span class="ico t-violet"><svg class="ic"><use href="#i-target"/></svg></span><h3>ابدأ في مجالك</h3></div>
+        <p>ثلاث خطوات: اكتب ملف سياقك، وصِل أدواتك، وراجع قبل أن تنشر. اختر مجالك:</p>
+        <div class="fields" id="fields"></div>
+        <div class="fout" id="fout"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">الفريق</span>
+      <h2 class="h2"><span class="l2">من حائل،</span><span class="l2 grad">ولأجل حائل.</span></h2>
+    </div>
+    <div class="team">
+      <div class="member rv"><span class="avatar t-sand">ع</span><h3>عبدالعزيز العثمان</h3><p>رئيس مجلس الإدارة، مسؤول الشراكات</p></div>
+      <div class="member rv"><span class="avatar t-blue">م</span><h3>مصعب الفريدي</h3><p>نائب رئيس مجلس الإدارة والرئيس التنفيذي</p></div>
+      <div class="member rv"><span class="avatar t-teal">ر</span><h3>رايد الشمري</h3><p>عضو مجلس الإدارة، البرنامج والمحتوى</p></div>
+      <div class="member rv"><span class="avatar t-violet">ر</span><h3>رهف الحيص</h3><p>عضوة مجلس الإدارة، المتطوعون</p></div>
+      <div class="member rv"><span class="avatar t-green">ب</span><h3>البتول الرشدان</h3><p>عضوة مجلس الإدارة، الإعلام والتسويق</p></div>
+    </div>
+    <div class="end rv" style="margin-top:72px">
+      <h2><span style="display:block">من المعرفة، إلى التطبيق،</span><span class="grad">إلى الفرصة.</span></h2>
+      <div class="ctas"><a class="btn primary" href="#program">اكتشف البرنامج</a><a class="btn ghost" href="#top">العودة للبداية</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <span>جمعية صقل · منطقة حائل</span>
+  <span>محتضنة في حاضنة مسك للمبادرات</span>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var ic = function (n) { return '<svg class="ic"><use href="#i-' + n + '"/></svg>'; };
+  var esc = function (s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* progress bar + nav highlight */
+  var prog = $("#progress"), links = $$(".links a");
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function onScroll() {
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    var cur = -1;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < window.innerHeight * .4) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle("on", i === cur); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* program dots: 40 dots stand for 500, the lit ones are the 200 who move on */
+  var dots = $("#dots");
+  for (var d = 0; d < 40; d++) { var i = document.createElement("i"); if (d % 5 < 2) i.className = "sel"; dots.appendChild(i); }
+
+  /* count-up */
+  function fmt(n) { return n.toLocaleString("en-US"); }
+  function count(el) {
+    if (el.dataset.done) return; el.dataset.done = "1";
+    var to = +el.dataset.to, pre = el.dataset.pre || "", t0 = null;
+    if (still) return;
+    function step(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1100); el.textContent = pre + fmt(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+
+  /* chat: messages arrive one by one */
+  var chatDone = false;
+  function playChat() {
+    if (chatDone) return; chatDone = true;
+    var msgs = $$("#chat .msg");
+    if (still) return;
+    msgs.forEach(function (m, k) { if (k > 0) m.classList.add("wait"); });
+    msgs.forEach(function (m, k) { if (k > 0) setTimeout(function () { m.classList.remove("wait"); }, 450 * k + 300); });
+  }
+
+  /* md typing */
+  var mdText = "# صقل\nجمعية أهلية في حائل لبناء القدرات في الذكاء الاصطناعي.\n\n## قواعد العمل\n- لا تكتب رقماً في الإطار المنطقي قبل أن تسألني\n- **كل رقم له مصدر**\n- عربية مباشرة بلا مبالغة";
+  function paint(s, cursor) {
+    var html = esc(s).split("\n").map(function (l) {
+      if (/^#{1,2} /.test(l)) return '<span class="h">' + l + "</span>";
+      return l.replace(/\*\*(.+?)\*\*/g, '<span class="b">**$1**</span>');
+    }).join("\n");
+    $("#code").innerHTML = html + (cursor ? '<span class="cursor"></span>' : "");
+  }
+  paint(mdText, true);
+  var typed = false;
+  function typeMd() {
+    if (typed || still) return; typed = true;
+    var n = 0;
+    (function tick() { n += 2; paint(mdText.slice(0, n), true); if (n < mdText.length) setTimeout(tick, 22); })();
+  }
+
+  /* reveal on scroll: visible at rest, lifted into place when reached */
+  var rvs = $$(".rv");
+  if (!still && "IntersectionObserver" in window) {
+    rvs.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight * .9) el.classList.add("pre"); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, delay = (Array.prototype.indexOf.call(el.parentNode.children, el) % 6) * 90;
+        setTimeout(function () {
+          el.classList.remove("pre"); el.classList.add("in");
+          $$("[data-to]", el).forEach(count);
+          if (el.id === "chat") playChat();
+          if (el.id === "mdcard") typeMd();
+        }, delay);
+        io.unobserve(el);
+      });
+    }, { threshold: .18 });
+    rvs.forEach(function (el) { io.observe(el); });
+  } else {
+    rvs.forEach(function (el) { el.classList.add("in"); });
+  }
+  setTimeout(function () { var m = $("#heroMeter"); if (m) m.classList.remove("zero"); }, 500);
+
+  /* context */
+  var ctx = {
+    no: "<small>رد المساعد</small>جمعيتكم منظمة غير ربحية تسعى لخدمة المجتمع وتحقيق أثر إيجابي من خلال برامج ومبادرات متنوعة.",
+    yes: "<small>رد المساعد</small>صقل جمعية أهلية في حائل متخصصة في بناء القدرات في الذكاء الاصطناعي، ومحتضنة في حاضنة مسك. تنقل الطلاب والخريجين من استخدام الأدوات إلى بناء حلول لتحديات جهات المنطقة."
+  };
+  function setCtx(k) {
+    $("#ctx-no").setAttribute("aria-pressed", k === "no" ? "true" : "false");
+    $("#ctx-yes").setAttribute("aria-pressed", k === "yes" ? "true" : "false");
+    var o = $("#ctx-out"); o.innerHTML = ctx[k]; o.className = "bub " + (k === "yes" ? "t-blue" : "t-sand");
+  }
+  $("#ctx-no").addEventListener("click", function () { setCtx("no"); });
+  $("#ctx-yes").addEventListener("click", function () { setCtx("yes"); });
+  setCtx("yes");
+
+  /* context window */
+  var parts = [
+    { n: "تعليمات ثابتة", w: 12, c: "violet", d: "ملف CLAUDE.md: من نحن، وأولوياتنا، وقواعد الكتابة. يُقرأ في كل محادثة." },
+    { n: "الملفات", w: 30, c: "teal", d: "ما يفتحه المساعد أثناء العمل: ملف العرض الفني والمالي، وأوراق عمل مسك، وتقرير النادي السنوي." },
+    { n: "المحادثة", w: 38, c: "blue", d: "رسائلك وردوده. هذا الجزء يكبر بسرعة، وحين يمتلئ يُلخَّص أوله." },
+    { n: "نتائج الأدوات", w: 20, c: "sand", d: "ما يعود من الأدوات: محتوى ملف من Drive، ومواعيد التقويم، ونتائج البحث." }
+  ];
+  var win = $("#win"), legend = $("#legend");
+  parts.forEach(function (p, k) {
+    var b = document.createElement("i"); b.style.width = p.w + "%"; b.style.background = "var(--" + p.c + "-ink)"; b.style.cursor = "pointer"; b.title = p.n;
+    b.addEventListener("click", function () { winPick(k); }); win.appendChild(b);
+    var l = document.createElement("button"); l.style.cssText = "border:0;background:transparent;cursor:pointer;color:inherit;padding:0";
+    l.innerHTML = '<b style="background:var(--' + p.c + '-ink)"></b>' + p.n; l.addEventListener("click", function () { winPick(k); }); legend.appendChild(l);
+  });
+  function winPick(k) { $("#win-out").innerHTML = "<small>" + parts[k].n + "</small>" + parts[k].d; }
+  winPick(2);
+
+  /* MCP hub */
+  var tools = [
+    { n: "Google Drive", icon: "hard-drive", c: "blue", x: 82, y: 22, d: "قرأ ملف أوراق عمل جمع التمويل، ثم أنشأ مستنداً بالمراجعة وشاركه مع عبدالعزيز بصلاحية تعديل." },
+    { n: "التقويم", icon: "calendar", c: "teal", x: 86, y: 76, d: "وجد مواعيد ورش حاضنة مسك للأسابيع 7 و8 و9 لتجهيز نقاط فيديو." },
+    { n: "الويب", icon: "globe", c: "sky", x: 18, y: 22, d: "تحقق من برامج صندوق دعم الجمعيات وهدف وأوقاف الراجحي ومايكروسوفت، مع روابط المصادر." },
+    { n: "Notion", icon: "notebook-pen", c: "violet", x: 14, y: 76, d: "قرأ الإطار المنطقي المعتمد للجمعية من مساحة الفريق." },
+    { n: "Miro", icon: "layout-grid", c: "sand", x: 50, y: 92, d: "قرأ إطار البرنامج المرسوم على لوحة الفريق، وقارنه بما سلّمناه لمسك." }
+  ];
+  var hub = $("#hub"), hs = $("#hubsvg");
+  tools.forEach(function (t, k) {
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    p.setAttribute("x1", 50); p.setAttribute("y1", 50); p.setAttribute("x2", 100 - t.x); p.setAttribute("y2", t.y);
+    p.setAttribute("stroke", "var(--" + t.c + "-ink)"); p.setAttribute("stroke-width", ".8"); p.setAttribute("class", "ants go"); p.setAttribute("vector-effect", "non-scaling-stroke");
+    p.style.strokeWidth = "2.5"; hs.appendChild(p);
+    var b = document.createElement("button"); b.className = "node"; b.style.right = t.x + "%"; b.style.top = t.y + "%"; b.style.color = "var(--" + t.c + "-ink)";
+    b.setAttribute("aria-pressed", "false"); b.innerHTML = '<i class="t-' + t.c + '">' + ic(t.icon) + "</i><span style=\"color:var(--ink)\">" + t.n + "</span>";
+    b.addEventListener("click", function () { hubPick(k); }); hub.appendChild(b);
+  });
+  function hubPick(k) {
+    $$(".node", hub).forEach(function (b, j) { b.setAttribute("aria-pressed", j === k ? "true" : "false"); });
+    var o = $("#hub-out"); o.className = "bub t-" + tools[k].c; o.innerHTML = "<small>" + tools[k].n + "</small>" + tools[k].d;
+  }
+  hubPick(0);
+
+  /* quiz */
+  $$("#quiz .choice").forEach(function (b) {
+    b.addEventListener("click", function () {
+      $$("#quiz .choice").forEach(function (x) { x.removeAttribute("data-state"); });
+      var ok = b.dataset.ok === "1"; b.setAttribute("data-state", ok ? "right" : "wrong");
+      var o = $("#quiz-out"); o.hidden = false; o.className = "bub " + (ok ? "t-green" : "t-sand");
+      o.textContent = ok ? "هذا ما فعلناه. رجعنا للتقرير السنوي للنادي، ومجموع الحضور في مخططه قرابة 6,500، فبقي الرقم بثقة."
+                         : "الأفضل أن تطلب المصدر. الرقم كان صحيحاً، وعرفنا ذلك فقط لأننا رجعنا للتقرير السنوي للنادي.";
+    });
+  });
+
+  /* your field */
+  var fields = {
+    "الصحة": { file: "# قسم الطوارئ\n- ممرض في مستشفى بحائل\n- قاعدة: لا بيانات مرضى حقيقية", tools: "التقويم وملفات البروتوكولات", task: "لخّص بروتوكول الفرز الجديد في بطاقة من صفحة للمناوبة الليلية." },
+    "التعليم": { file: "# معلمة رياضيات\n- الصف الثاني متوسط\n- قاعدة: كل تمرين بحلّه", tools: "Drive وجدول الحصص", task: "حضّر خطة درس الكسور مع ثلاثة تمارين متدرجة وورقة عمل." },
+    "الهندسة": { file: "# مهندس مدني\n- مشاريع بلدية في حائل\n- قاعدة: اذكر رقم البند لكل اشتراط", tools: "مجلد المشاريع وجداول الكميات", task: "راجع جدول الكميات وأشر إلى البنود المختلفة عن المخطط." },
+    "الإدارة": { file: "# منسقة مشاريع\n- تقرير أسبوعي كل خميس\n- قاعدة: الأرقام من الجدول فقط", tools: "البريد والتقويم وجدول المتابعة", task: "اكتب تقرير هذا الأسبوع من جدول المتابعة، واتركه مسودة لأراجعه." }
+  };
+  var fw = $("#fields"), fo = $("#fout");
+  Object.keys(fields).forEach(function (k) {
+    var b = document.createElement("button"); b.textContent = k; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () { fieldPick(k); }); fw.appendChild(b);
+  });
+  function fieldPick(k) {
+    $$("button", fw).forEach(function (b) { b.setAttribute("aria-pressed", b.textContent === k ? "true" : "false"); });
+    var f = fields[k];
+    fo.innerHTML = "<div><small>1. ملف السياق</small><pre>" + esc(f.file) + "</pre></div><div><small>2. الأدوات الموصولة</small>" + f.tools + "</div><div><small>3. أول مهمة</small>" + f.task + "</div>";
+  }
+  fieldPick("الصحة");
+})();
+</script>
+</body>
+</html>
