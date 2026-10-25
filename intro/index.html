@@ -389,6 +389,7 @@
       <a href="#program">البرنامج</a>
       <a href="#ai">الذكاء الاصطناعي</a>
       <a href="#team">الفريق</a>
+      <a href="../profile/">تعريف الجمعية</a>
     </div>
   </div>
 </nav>
@@ -729,7 +730,7 @@
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* progress bar + nav highlight */
-  var prog = $("#progress"), links = $$(".links a");
+  var prog = $("#progress"), links = $$('.links a[href^="#"]');
   var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
   function onScroll() {
     var h = document.documentElement, max = h.scrollHeight - h.clientHeight;

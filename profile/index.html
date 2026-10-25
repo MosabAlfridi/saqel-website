@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تعريف جمعية صقل</title>
+<meta name="description" content="جمعية صقل: جمعية أهلية لبناء القدرات في الذكاء الاصطناعي في منطقة حائل. من نحن، ورسالتنا، وأهدافنا، وما نبنيه، ومجلس الإدارة.">
+<meta name="theme-color" content="#0A0F2C">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0A0F2C; --deep2: #0E1438; --surface: #161D45; --line: #232B57;
+    --elec: #183BFF; --sky: #30A1FF; --turq: #00F0C2; --sand: #D9A46C;
+    --text: #F4F6FB; --body: #C9D2EA; --muted: #9AA8C7;
+    --grad: linear-gradient(120deg, var(--elec), var(--sky) 55%, var(--turq));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Readex Pro", system-ui, sans-serif; background: var(--deep); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+
+  /* top bar */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(10,15,44,.86); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+  .brand svg { width: 44px; height: auto; }
+  .top nav { display: flex; gap: 6px; font-size: 14px; }
+  .top nav a { padding: 8px 14px; border-radius: 12px; color: var(--muted); transition: color .2s, background .2s; }
+  .top nav a:hover { color: var(--text); background: rgba(255,255,255,.05); }
+  .top nav a.on { color: var(--deep); background: var(--turq); font-weight: 600; }
+
+  /* hero */
+  .hero { padding: 72px 0 56px; background: radial-gradient(700px 420px at 100% 0%, rgba(24,59,255,.32), transparent 65%), radial-gradient(600px 400px at 0% 100%, rgba(0,240,194,.12), transparent 65%); }
+  .hero .wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .hero svg { width: 140px; height: auto; flex: none; }
+  .hero h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.1; font-weight: 700; }
+  .hero p { font-size: clamp(17px, 2.4vw, 21px); color: var(--body); margin-top: 8px; }
+  .chip { display: inline-block; margin-top: 16px; border: 1px solid rgba(0,240,194,.5); color: var(--turq); border-radius: 999px; padding: 6px 16px; font-size: 14px; }
+
+  section.block { padding: 56px 0; }
+  section.block.alt { background: var(--deep2); }
+  h2 { font-size: clamp(26px, 4vw, 34px); font-weight: 700; color: var(--turq); margin-bottom: 24px; }
+  .about { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.9; color: #E6EBF7; max-width: 900px; }
+  .about b { color: var(--text); }
+
+  .mission { margin-top: 36px; border-radius: 24px; padding: 32px 28px; background: linear-gradient(120deg, rgba(24,59,255,.28), rgba(0,240,194,.10)); border: 1px solid rgba(0,240,194,.4); }
+  .mission small { display: block; font-size: 14px; font-weight: 600; color: var(--turq); margin-bottom: 10px; }
+  .mission p { font-size: clamp(19px, 2.8vw, 26px); line-height: 1.75; font-weight: 500; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; }
+  .num { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 19px; background: var(--grad); margin-bottom: 16px; }
+  .card h3 { font-size: 20px; font-weight: 600; line-height: 1.4; }
+  .card p { font-size: 15.5px; color: var(--body); margin-top: 8px; line-height: 1.7; }
+  .ico { width: 40px; height: 40px; color: var(--turq); margin-bottom: 14px; }
+  .how { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+  .how span { font-size: 14.5px; text-align: center; padding: 14px 12px; border-radius: 16px; background: rgba(48,161,255,.12); color: #CFE6FF; line-height: 1.5; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; list-style: none; }
+  .steps::before { content: ""; position: absolute; top: 22px; right: 12.5%; left: 12.5%; height: 3px; border-radius: 3px; background: linear-gradient(90deg, rgba(48,161,255,.8), rgba(0,240,194,.8)); }
+  .steps li { text-align: center; position: relative; padding: 0 6px; }
+  .steps i { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; background: var(--grad); font-style: normal; font-weight: 700; box-shadow: 0 0 0 6px var(--deep2); }
+  .steps span { font-size: 15.5px; color: var(--body); line-height: 1.6; }
+
+  .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .member { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px 14px; text-align: center; }
+  .av { width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 22px; background: rgba(48,161,255,.15); color: var(--sky); border: 1px solid rgba(48,161,255,.4); }
+  .lead .av { background: rgba(217,164,108,.15); color: var(--sand); border-color: rgba(217,164,108,.5); }
+  .member h3 { font-size: 16.5px; font-weight: 600; line-height: 1.4; }
+  .member p { font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.55; }
+  .record { margin-top: 22px; font-size: 14px; color: var(--muted); text-align: center; padding-top: 16px; border-top: 1px solid var(--line); }
+
+  .cta { padding: 56px 0 72px; text-align: center; }
+  .cta p { font-size: clamp(20px, 3vw, 26px); font-weight: 600; }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+  .btn { padding: 13px 26px; border-radius: 14px; font-weight: 600; font-size: 15px; }
+  .btn.primary { background: var(--grad); color: var(--deep); }
+  .btn.ghost { border: 1px solid var(--line); background: rgba(255,255,255,.04); }
+  footer { border-top: 1px solid var(--line); padding: 22px 0 calc(22px + env(safe-area-inset-bottom, 0px)); font-size: 13px; color: var(--muted); text-align: center; }
+
+  @media (max-width: 860px) {
+    .grid3 { grid-template-columns: 1fr; }
+    .how { grid-template-columns: repeat(2, 1fr); }
+    .team { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: 1fr; gap: 18px; }
+    .steps::before { top: 10px; bottom: 10px; right: 22px; left: auto; width: 3px; height: auto; background: linear-gradient(180deg, rgba(48,161,255,.8), rgba(0,240,194,.8)); }
+    .steps li { display: flex; align-items: center; gap: 14px; text-align: right; padding: 0; }
+    .steps i { margin: 0; flex: none; }
+  }
+  @media (max-width: 520px) {
+    .top nav a.home { display: none; }
+    .hero { padding-top: 48px; }
+    .hero svg { width: 104px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <svg viewBox="53.2 53.8 59.3 35.9" aria-hidden="true"><defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#183BFF"/><stop offset=".5" stop-color="#30A1FF"/><stop offset="1" stop-color="#00F0C2"/></linearGradient></defs><path fill="url(#lg1)" d="M112.490,82.214C112.490,85.924 109.480,88.934 105.760,88.934 103.540,88.934 101.580,87.864 100.370,86.204L99.640,84.974 87.150,63.964V63.954C86.550,62.954 86.210,61.784 86.210,60.534 86.210,56.824 89.220,53.814 92.930,53.814 95.650,53.814 97.826,55.448 99.040,57.724L111.120,78.164 111.940,79.554C112.300,80.374 112.490,81.264 112.490,82.214 M90.647,82.721C90.617,85.961 88.187,88.811 84.987,89.301 82.337,89.701 79.927,88.571 78.527,86.651L77.884,85.732C77.832,85.657 77.776,85.585 77.716,85.516 77.245,84.970 76.730,84.463 76.177,84.001 75.297,83.371 74.277,82.971 73.207,82.821 70.997,82.511 68.747,83.151 67.027,84.581L65.397,85.941C63.593,87.561 62.187,88.931 59.867,88.931 56.198,88.931 53.228,85.942 53.267,82.253 53.304,78.704 56.281,75.749 59.830,75.730 61.432,75.722 62.908,76.287 64.057,77.229 64.794,77.832 65.551,78.407 66.388,78.863 66.409,78.875 66.431,78.887 66.453,78.899 68.147,79.822 70.269,79.256 71.277,77.611 71.861,76.658 71.870,75.459 71.299,74.498L65.307,64.411V64.401C64.607,63.231 64.257,61.841 64.397,60.351 64.697,56.951 67.677,54.251 71.097,54.261 73.817,54.271 75.977,55.891 77.197,58.171L89.277,78.611 90.097,80.001C90.467,80.841 90.657,81.751 90.647,82.721"/></svg>
+      <span>صقل</span>
+    </a>
+    <nav aria-label="التنقل">
+      <a class="home" href="../">الرئيسية</a>
+      <a class="on" href="./" aria-current="page">تعريف الجمعية</a>
+      <a href="../#contact">تواصل</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <svg viewBox="53.2 53.8 59.3 35.9" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#183BFF"/><stop offset=".5" stop-color="#30A1FF"/><stop offset="1" stop-color="#00F0C2"/></linearGradient></defs><path fill="url(#lg2)" d="M112.490,82.214C112.490,85.924 109.480,88.934 105.760,88.934 103.540,88.934 101.580,87.864 100.370,86.204L99.640,84.974 87.150,63.964V63.954C86.550,62.954 86.210,61.784 86.210,60.534 86.210,56.824 89.220,53.814 92.930,53.814 95.650,53.814 97.826,55.448 99.040,57.724L111.120,78.164 111.940,79.554C112.300,80.374 112.490,81.264 112.490,82.214 M90.647,82.721C90.617,85.961 88.187,88.811 84.987,89.301 82.337,89.701 79.927,88.571 78.527,86.651L77.884,85.732C77.832,85.657 77.776,85.585 77.716,85.516 77.245,84.970 76.730,84.463 76.177,84.001 75.297,83.371 74.277,82.971 73.207,82.821 70.997,82.511 68.747,83.151 67.027,84.581L65.397,85.941C63.593,87.561 62.187,88.931 59.867,88.931 56.198,88.931 53.228,85.942 53.267,82.253 53.304,78.704 56.281,75.749 59.830,75.730 61.432,75.722 62.908,76.287 64.057,77.229 64.794,77.832 65.551,78.407 66.388,78.863 66.409,78.875 66.431,78.887 66.453,78.899 68.147,79.822 70.269,79.256 71.277,77.611 71.861,76.658 71.870,75.459 71.299,74.498L65.307,64.411V64.401C64.607,63.231 64.257,61.841 64.397,60.351 64.697,56.951 67.677,54.251 71.097,54.261 73.817,54.271 75.977,55.891 77.197,58.171L89.277,78.611 90.097,80.001C90.467,80.841 90.657,81.751 90.647,82.721"/></svg>
+      <div>
+        <h1>جمعية صقل</h1>
+        <p>جمعية أهلية لبناء القدرات في الذكاء الاصطناعي · منطقة حائل</p>
+        <span class="chip">محتضنة في حاضنة مسك للمبادرات</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" aria-labelledby="h-about">
+    <div class="wrap">
+      <h2 id="h-about">من نحن</h2>
+      <p class="about"><b>صقل جمعية أهلية في منطقة حائل.</b> نؤمن أن حائل مليئة بالطاقات والكفاءات والموارد، ونعمل على أن يتقن أهلها الذكاء الاصطناعي ويوظفوه في مجالاتهم، ليكونوا المحرك الأساسي لبناء حلول منطقتهم بأيديهم.</p>
+      <div class="mission">
+        <small>رسالتنا</small>
+        <p>نمكّن أفراد حائل من توظيف الذكاء الاصطناعي في مجالاتهم ليستثمروا كفاءات منطقتهم ومواردها، عبر رحلة تبدأ من التوعية وتصل بهم إلى فرصة حقيقية.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="h-goals">
+    <div class="wrap">
+      <h2 id="h-goals">أهدافنا</h2>
+      <div class="grid3">
+        <div class="card"><div class="num">1</div><h3>حائل منتجة للذكاء الاصطناعي</h3><p>تحويل حائل من منطقة مستهلكة لأدوات الذكاء الاصطناعي إلى منطقة منتجة له</p></div>
+        <div class="card"><div class="num">2</div><h3>جاهزية لسوق العمل</h3><p>رفع جاهزية الطلاب والخريجين لسوق العمل، وتقليص الفجوة بين مخرجات التعليم واحتياج السوق</p></div>
+        <div class="card"><div class="num">3</div><h3>حائل الخيار الأول</h3><p>بيئة محلية محفّزة تجعل البقاء والعمل في حائل الخيار الأول للكوادر، مع ربطهم بالفرص خارجها عند توفرها</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-build">
+    <div class="wrap">
+      <h2 id="h-build">ما نبنيه</h2>
+      <div class="grid3">
+        <div class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3>المجتمع</h3><p>لقاءات دورية تجمع المهتمين والخبراء في حائل</p>
+        </div>
+        <div class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+          <h3>الأكاديمية</h3><p>دورات على مسارين، تقني وتطبيقي، تنتهي بمشروع</p>
+        </div>
+        <div class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          <h3>مختبر الحلول</h3><p>فرق تحل تحديات حقيقية لجهات المنطقة</p>
+        </div>
+      </div>
+      <div class="how"><span>نبدأ من مجال المستفيد لا من التقنية</span><span>تعلّم قائم على التطبيق</span><span>خبراء ومرشدون يرافقونه</span><span>ربط القادرين بفرص حقيقية</span></div>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="h-now">
+    <div class="wrap">
+      <h2 id="h-now">أين نحن الآن</h2>
+      <ol class="steps">
+        <li><i>1</i><span>في حاضنة مسك للمبادرات</span></li>
+        <li><i>2</i><span>درسنا الاحتياج ميدانياً مع شباب حائل</span></li>
+        <li><i>3</i><span>تنسيق مع مسك المهارات ودال وبيت الثقافة</span></li>
+        <li><i>4</i><span>النسخة الأولى من الأكاديمية في 2027</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-team">
+    <div class="wrap">
+      <h2 id="h-team">مجلس الإدارة</h2>
+      <div class="team">
+        <div class="member lead"><div class="av">ع</div><h3>عبدالعزيز العثمان</h3><p>رئيس مجلس الإدارة، مسؤول الشراكات</p></div>
+        <div class="member"><div class="av">م</div><h3>مصعب الفريدي</h3><p>نائب رئيس مجلس الإدارة والرئيس التنفيذي</p></div>
+        <div class="member"><div class="av">ر</div><h3>رايد الشمري</h3><p>عضو مجلس الإدارة، البرنامج والمحتوى</p></div>
+        <div class="member"><div class="av">ر</div><h3>رهف الحيص</h3><p>عضوة مجلس الإدارة، المتطوعون</p></div>
+        <div class="member"><div class="av">ب</div><h3>البتول الرشدان</h3><p>عضوة مجلس الإدارة، الإعلام والتسويق</p></div>
+        <div class="member"><div class="av">ع</div><h3>عبدالله الصقعبي</h3><p>عضو مجلس الإدارة، الرئيس التنفيذي لـ Bluerays Holdings</p></div>
+        <div class="member"><div class="av">أ</div><h3>د. أمجد الجنباز</h3><p>عضو مجلس الإدارة، مدير البرامج غير الربحية في مؤسسة مسك</p></div>
+      </div>
+      <p class="record">خبرة الفريق المؤسس في نادي الذكاء الاصطناعي بجامعة حائل: +60 نشاطاً · +6,000 زائر · 9 دورات · +12 إنجازاً وجائزة</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <p>نبني مع شركائنا أهدافاً مشتركة لحائل</p>
+      <div class="btns">
+        <a class="btn primary" href="../#contact">تواصل معنا</a>
+        <a class="btn ghost" href="../#join">انضم إلينا</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>جمعية صقل · منطقة حائل</footer>
+
+</body>
+</html>
